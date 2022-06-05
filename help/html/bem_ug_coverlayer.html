@@ -1,0 +1,287 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Cover layers</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_ug_coverlayer.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Cover layers</h1><!--introduction--><p>The cover layer class allows adding a thin cover layer to a particle boundary.  Such layers can be used for the simulation of effect such as contamination in electron microscopy, as well as for the emulation of nonlocal dielectric functions through a thin, artificial cover layer with local dielectric properties.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Setting up cover layers</a></li><li><a href="#3">Simulations with cover layers</a></li><li><a href="#5">Examples</a></li><li><a href="#8">Simulations using nonlocality</a></li></ul></div><h2 id="1">Setting up cover layers</h2><p>A cover layer object is usually created by displacing the vertices of a given particle object <tt>p1</tt> along the directions of the outer surface normals</p><pre class="codeinput"><span class="comment">%  set up cover layer object by displacing boundary of particle P1 along</span>
+<span class="comment">%  directions of outer surface by distance D</span>
+p2 = coverlayer.shift( p1, d );
+<span class="comment">%  additionally provide shift directions at vertices</span>
+p2 = coverlayer.shift( p1, d, <span class="string">'nvec'</span>, nvec );
+</pre><p>In the above calls the input arguments are</p><div><ul><li><b>p1</b> particle boundary that is used as template for cover layer,</li><li><b>d</b> distance along which vertices of cover layer are shifted (<tt>d</tt> can also be a vector if different shift distances are required),</li><li><b>nvec</b> are the outer surface-normal directions along which vertices are shifted.</li></ul></div><h2 id="3">Simulations with cover layers</h2><p>Simulations with cover layers are performed in completely the same way as for normal particles.  The only difference is that for closely spaced cover layers one has to be careful with the Green function <a href="bem_ug_integration.html">integration</a> over neighbour boundary elements. One can pass an additonal argument <tt>'refun'</tt> to the BEM solvers to perform the integration over twin boundary elements in polar coordinates</p><pre class="codeinput"><span class="comment">%  use sufficiently large value for 'npol' for accurate interation over</span>
+<span class="comment">%  neighbour boundary elements</span>
+op = bemoptions( op, <span class="string">'npol'</span>, 20 );
+<span class="comment">%  initialize BEM solver with refined integration over twin boundary</span>
+<span class="comment">%  elements of the shifted cover layer</span>
+bem = bemsolver( p, op, <span class="string">'refun'</span>, coverlayer.refine( p, [ 1, 2 ] ) );
+</pre><p>The array <tt>[1,2]</tt> corresponds to the boundaries of the <a href="bem_ug_comparticle.html">comparticle</a> object, where one is created by displacing the vertices of the other one.  One should check the convergence of the simulations by verifying that the simulation results do not change significantly with <tt>npol</tt>.</p><h2 id="5">Examples</h2><p>Consider a gold nanosphere that is covered by a thin layer</p><pre class="codeinput"><span class="comment">%  dielectric functions of embedding medium, gold, and cover layer</span>
+epstab = { epsconst( 1 ), epstable( <span class="string">'gold.dat'</span> ), epsconst( 4 ) };
+<span class="comment">%  gold nanosphere with a diameter of 10 nm</span>
+p1 = trisphere( 144, 10 );
+<span class="comment">%  cover layer with a thickness of 0.5 nm</span>
+p2 = coverlayer.shift( p1, 0.5 );
+<span class="comment">%  make COMPARTICLE object</span>
+p = comparticle( epstab, { p1, p2 }, [ 2, 3; 3, 1 ], 1, 2, op );
+
+<span class="comment">%  plot particles</span>
+plot( p1, <span class="string">'EdgeColor'</span>, <span class="string">'b'</span> );
+plot( p2, <span class="string">'EdgeColor'</span>, <span class="string">'r'</span>, <span class="string">'FaceAlpha'</span>, 0.5 );
+</pre><p><img vspace="5" hspace="5" src="../figures/cover1.jpg" alt=""> </p><p>As another example, we consider the situation where only the upper half of a sphere is covered with an additional material.  To this end, we create a nanosphere and split it into upper and lower parts, find the boundary of the upper particle, and add a cover layer over it.</p><pre class="codeinput"><span class="comment">%  nanosphere, split into upper and lower part</span>
+p = trispheresegment( linspace( 0, 2 * pi, 25 ), linspace( 0, pi, 21 ), 10 );
+[ pup, plo ] = select( p, <span class="string">'carfun'</span>, @( x, y, z ) z &gt; 0 );
+<span class="comment">%  border of upper part</span>
+net = border( pup );
+<span class="comment">%  distance array, set distances at border to zero</span>
+d = 0.25 * ones( p.nverts, 1 );
+d( unique( net( : ) ) ) = 0;
+<span class="comment">%  shift boundary for creation of cover layer</span>
+pcover = coverlayer.shift( pup, d );
+
+<span class="comment">%  plot particles</span>
+plot( p, <span class="string">'EdgeColor'</span>, <span class="string">'b'</span> );
+plot( pcover, <span class="string">'EdgeColor'</span>, <span class="string">'r'</span>, <span class="string">'FaceAlpha'</span>, 0.5 );
+</pre><p><img vspace="5" hspace="5" src="../figures/cover2.jpg" alt=""> </p><h2 id="8">Simulations using nonlocality</h2><p>Cover layers can be also used for the simulation of nonlocal dielectric functions.  Following the proposal of the Pendry group, Yu Luo et al., PRL 111, 093901 (2013), the effect of a nonlocal Drude-type dielectric function can be emulated by adding a thin artificial layer with a local permittivity over a Drude-type metal with a local permittivity. The permittivity <img src="bem_ug_coverlayer_eq03561365826181662011.png" alt="$\varepsilon_t$"> of the artificial layer of thickness <img src="bem_ug_coverlayer_eq16193120546379515779.png" alt="$\Delta d$"> is given by</p><p><img src="bem_ug_coverlayer_eq14450774074706791476.png" alt="$$ \varepsilon_t=\frac{\varepsilon_m\varepsilon_b\,q_L}&#xA;   {\varepsilon_m-\varepsilon_b}\Delta d\,,\quad&#xA;   q_L=\sqrt{\omega_p^2/\varepsilon_\infty-\omega(\omega+i\gamma)}/\beta\,.&#xA;$$"></p><p>Here <img src="bem_ug_coverlayer_eq06554338946940003342.png" alt="$\varepsilon_m$"> is the Drude-type local permittivity of the metal, with plasma frequency <img src="bem_ug_coverlayer_eq07149943006201974670.png" alt="$\omega_p$">, damping rate <img src="bem_ug_coverlayer_eq17096441642737911057.png" alt="$\gamma$">, and ionic background dielectric constant <img src="bem_ug_coverlayer_eq13742775895327461345.png" alt="$\varepsilon_\infty$">. <img src="bem_ug_coverlayer_eq05854955811857200880.png" alt="$q_L$"> is the longitudinal plasmon wavenumber, <img src="bem_ug_coverlayer_eq17331442575217596290.png" alt="$\beta$"> an effective velocity, and <img src="bem_ug_coverlayer_eq14230301051811362357.png" alt="$\varepsilon_b$"> the dielectric constant of the embedding medium.  As discussed in the paper of Luo et al., the model works best for extremely small layer thicknesses <img src="bem_ug_coverlayer_eq16193120546379515779.png" alt="$\Delta d$">.</p><p>In our toolbox, this nonlocal model can be implemented as follows</p><pre class="codeinput"><span class="comment">%  thickness of artificial layer</span>
+d = 0.05;
+<span class="comment">%  longitudinal plasmon wavenumber, see Yu Luo et al., PRL 111, 093901 (2013).</span>
+units;
+ql = @( w ) 2 * pi * sqrt( 3.3 ^ 2 - w .* ( w + 1i * 0.165 ) ) / ( 0.0036 * eV2nm );
+<span class="comment">%  table of dielectric functions</span>
+<span class="comment">%    eps1 - dielectric constant of embedding medium</span>
+<span class="comment">%    eps2 - Drude-type dielectric function representative for gold</span>
+<span class="comment">%    eps3 - artificial permittivity according to description of Luo et al.</span>
+eps1 = epsconst( 1 );
+eps2 = epsfun( @( w ) 1 - 3.3 ^ 2 ./ ( w .* ( w + 1i * 0.165 ) ), <span class="string">'eV'</span> );
+eps3 = epsfun( @( enei ) eps2( enei ) .* eps1( enei ) ./  <span class="keyword">...</span>
+            ( eps2( enei ) - eps1( enei ) ) .* ql( eV2nm ./ enei ) * d );
+
+epstab = { eps1, eps2, eps3 };
+<span class="comment">%  diameter of sphere</span>
+diameter = 10;
+<span class="comment">%  initialize spheres</span>
+p2 = trisphere( 144, diameter - d );
+p1 = coverlayer.shift( p2, d );
+<span class="comment">%  make COMPARTICLE object</span>
+p = comparticle( epstab, { p1, p2 }, [ 3, 1; 2, 3 ], 1, 2, op );
+
+<span class="comment">%  set up BEM solver</span>
+bem = bemsolver( p, op, <span class="string">'refun'</span>, coverlayer.refine( p, [ 1, 2 ] ) );
+</pre><p>The rest of the simulation is in complete analogy to normal BEM simulations.  In the example section we provide the full code for nonlocal simulations for single and coupled nanospheres.</p><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Cover layers
+%
+% The cover layer class allows adding a thin cover layer to a particle
+% boundary.  Such layers can be used for the simulation of effect such as
+% contamination in electron microscopy, as well as for the emulation of
+% nonlocal dielectric functions through a thin, artificial cover layer with
+% local dielectric properties.
+% 
+%% Setting up cover layers
+%
+% A cover layer object is usually created by displacing the vertices of a
+% given particle object |p1| along the directions of the outer surface
+% normals 
+
+%  set up cover layer object by displacing boundary of particle P1 along
+%  directions of outer surface by distance D
+p2 = coverlayer.shift( p1, d );
+%  additionally provide shift directions at vertices
+p2 = coverlayer.shift( p1, d, 'nvec', nvec );
+
+%%
+% In the above calls the input arguments are
+%
+% * *p1* particle boundary that is used as template for cover layer,
+% * *d* distance along which vertices of cover layer are shifted (|d| can
+% also be a vector if different shift distances are required),
+% * *nvec* are the outer surface-normal directions along which vertices are
+% shifted.
+%
+%% Simulations with cover layers
+%
+% Simulations with cover layers are performed in completely the same way as
+% for normal particles.  The only difference is that for closely spaced
+% cover layers one has to be careful with the Green function
+% <bem_ug_integration.html integration> over neighbour boundary elements.
+% One can pass an additonal argument |'refun'| to the BEM solvers to
+% perform the integration over twin boundary elements in polar coordinates
+
+%  use sufficiently large value for 'npol' for accurate interation over
+%  neighbour boundary elements
+op = bemoptions( op, 'npol', 20 );
+%  initialize BEM solver with refined integration over twin boundary
+%  elements of the shifted cover layer
+bem = bemsolver( p, op, 'refun', coverlayer.refine( p, [ 1, 2 ] ) );
+
+%%
+% The array |[1,2]| corresponds to the boundaries of the
+% <bem_ug_comparticle.html comparticle> object, where one is created by
+% displacing the vertices of the other one.  One should check the
+% convergence of the simulations by verifying that the simulation results
+% do not change significantly with |npol|.
+%
+%% Examples
+%
+% Consider a gold nanosphere that is covered by a thin layer 
+
+%  dielectric functions of embedding medium, gold, and cover layer
+epstab = { epsconst( 1 ), epstable( 'gold.dat' ), epsconst( 4 ) };
+%  gold nanosphere with a diameter of 10 nm
+p1 = trisphere( 144, 10 );
+%  cover layer with a thickness of 0.5 nm
+p2 = coverlayer.shift( p1, 0.5 );
+%  make COMPARTICLE object
+p = comparticle( epstab, { p1, p2 }, [ 2, 3; 3, 1 ], 1, 2, op );
+
+%  plot particles
+plot( p1, 'EdgeColor', 'b' );
+plot( p2, 'EdgeColor', 'r', 'FaceAlpha', 0.5 );
+
+%%
+% <<../figures/cover1.jpg>>
+%
+% As another example, we consider the situation where only the upper half
+% of a sphere is covered with an additional material.  To this end, we
+% create a nanosphere and split it into upper and lower parts, find the
+% boundary of the upper particle, and add a cover layer over it.
+
+%  nanosphere, split into upper and lower part
+p = trispheresegment( linspace( 0, 2 * pi, 25 ), linspace( 0, pi, 21 ), 10 );
+[ pup, plo ] = select( p, 'carfun', @( x, y, z ) z > 0 );
+%  border of upper part
+net = border( pup );
+%  distance array, set distances at border to zero
+d = 0.25 * ones( p.nverts, 1 );
+d( unique( net( : ) ) ) = 0;
+%  shift boundary for creation of cover layer
+pcover = coverlayer.shift( pup, d );
+
+%  plot particles
+plot( p, 'EdgeColor', 'b' );
+plot( pcover, 'EdgeColor', 'r', 'FaceAlpha', 0.5 );
+
+%%
+% <<../figures/cover2.jpg>>
+%
+%% Simulations using nonlocality
+%
+% Cover layers can be also used for the simulation of nonlocal dielectric
+% functions.  Following the proposal of the Pendry group, Yu Luo et al.,
+% PRL 111, 093901 (2013), the effect of a nonlocal Drude-type dielectric
+% function can be emulated by adding a thin artificial layer with a local
+% permittivity over a Drude-type metal with a local permittivity. The
+% permittivity $\varepsilon_t$ of the artificial layer of thickness $\Delta
+% d$ is given by
+%
+% $$ \varepsilon_t=\frac{\varepsilon_m\varepsilon_b\,q_L}
+%    {\varepsilon_m-\varepsilon_b}\Delta d\,,\quad
+%    q_L=\sqrt{\omega_p^2/\varepsilon_\infty-\omega(\omega+i\gamma)}/\beta\,.
+% $$
+%
+% Here $\varepsilon_m$ is the Drude-type local permittivity of the metal,
+% with plasma frequency $\omega_p$, damping rate $\gamma$, and ionic
+% background dielectric constant $\varepsilon_\infty$. $q_L$ is the
+% longitudinal plasmon wavenumber, $\beta$ an effective velocity, and
+% $\varepsilon_b$ the dielectric constant of the embedding medium.  As
+% discussed in the paper of Luo et al., the model works best for extremely
+% small layer thicknesses $\Delta d$.
+%
+% In our toolbox, this nonlocal model can be implemented as follows
+
+%  thickness of artificial layer
+d = 0.05;
+%  longitudinal plasmon wavenumber, see Yu Luo et al., PRL 111, 093901 (2013).
+units;
+ql = @( w ) 2 * pi * sqrt( 3.3 ^ 2 - w .* ( w + 1i * 0.165 ) ) / ( 0.0036 * eV2nm );
+%  table of dielectric functions
+%    eps1 - dielectric constant of embedding medium
+%    eps2 - Drude-type dielectric function representative for gold
+%    eps3 - artificial permittivity according to description of Luo et al.
+eps1 = epsconst( 1 );
+eps2 = epsfun( @( w ) 1 - 3.3 ^ 2 ./ ( w .* ( w + 1i * 0.165 ) ), 'eV' );
+eps3 = epsfun( @( enei ) eps2( enei ) .* eps1( enei ) ./  ...
+            ( eps2( enei ) - eps1( enei ) ) .* ql( eV2nm ./ enei ) * d );
+          
+epstab = { eps1, eps2, eps3 };
+%  diameter of sphere
+diameter = 10;
+%  initialize spheres
+p2 = trisphere( 144, diameter - d );
+p1 = coverlayer.shift( p2, d );
+%  make COMPARTICLE object
+p = comparticle( epstab, { p1, p2 }, [ 3, 1; 2, 3 ], 1, 2, op );
+
+%  set up BEM solver
+bem = bemsolver( p, op, 'refun', coverlayer.refine( p, [ 1, 2 ] ) );
+
+%%
+% The rest of the simulation is in complete analogy to normal BEM
+% simulations.  In the example section we provide the full code for
+% nonlocal simulations for single and coupled nanospheres.
+%
+% Copyright 2017 Ulrich Hohenester
+
+##### SOURCE END #####
+--></body></html>

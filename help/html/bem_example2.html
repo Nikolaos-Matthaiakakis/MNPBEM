@@ -1,0 +1,191 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Dipole excitation examples</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_example2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Dipole excitation examples</h1><!--introduction--><p><img vspace="5" hspace="5" src="../figures/mnpbemlogo.jpg" alt=""> </p><p>The runtimes of the following programs are given for my not overly fast office computer (Intel i7-2600 CPU, 3.40 GHz, 8 GB RAM).</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Quasistatic dipole excitation examples</a></li><li><a href="#2">Retarded dipole excitation examples</a></li></ul></div><h2 id="1">Quasistatic dipole excitation examples</h2><div><ul><li><a href="matlab:edit('demodipstat1')">demodipstat1.m</a> - Lifetime reduction for dipole above metallic nanosphere (3 sec). <a href="matlab:beminfo('demodipstat1.m')">info</a>, <a href="matlab:eval('demodipstat1')">run</a></li><li><a href="matlab:edit('demodipstat2')">demodipstat2.m</a> - Energy dependent lifetime for dipole above a nanosphere (12 sec). <a href="matlab:beminfo('demodipstat2.m')">info</a>, <a href="matlab:eval('demodipstat2')">run</a></li><li><a href="matlab:edit('demodipstat3')">demodipstat3.m</a> - Electric field for dipole above metallic nanosphere (4 sec). <a href="matlab:beminfo('demodipstat3.m')">info</a>, <a href="matlab:eval('demodipstat3')">run</a></li><li><a href="matlab:edit('demodipstat4')">demodipstat4.m</a> - Photonic LDOS for a silver nanodisk (37 sec). <a href="matlab:beminfo('demodipstat4.m')">info</a>, <a href="matlab:eval('demodipstat4')">run</a></li></ul></div><div><ul><li><b>Layer structure</b></li></ul></div><div><ul><li><a href="matlab:edit('demodipstat5')">demodipstat5.m</a> - Lifetime reduction for dipole between sphere and layer (7.5 sec). <a href="matlab:beminfo('demodipstat5.m')">info</a>, <a href="matlab:eval('demodipstat5')">run</a></li><li><a href="matlab:edit('demodipstat6')">demodipstat6.m</a> - Electric field for dipole between sphere and layer (22 sec). <a href="matlab:beminfo('demodipstat6.m')">info</a>, <a href="matlab:eval('demodipstat6')">run</a></li><li><a href="matlab:edit('demodipstat7')">demodipstat7.m</a> - Photonic LDOS for nanodisk above layer (36 sec). <a href="matlab:beminfo('demodipstat7.m')">info</a>, <a href="matlab:eval('demodipstat7')">run</a></li><li><a href="matlab:edit('demodipstat8')">demodipstat8.m</a> - Electric field for dipole close to nanodisk and layer (23 sec). <a href="matlab:beminfo('demodipstat8.m')">info</a>, <a href="matlab:eval('demodipstat8')">run</a></li></ul></div><div><ul><li><b>Mirror symmetry</b></li></ul></div><div><ul><li><a href="matlab:edit('demodipstat9')">demodipstat9.m</a> - Dipole lifetime for nanosphere and mirror symmetry (4 sec). <a href="matlab:beminfo('demodipstat9.m')">info</a>, <a href="matlab:eval('demodipstat9')">run</a></li><li><a href="matlab:edit('demodipstat10')">demodipstat10.m</a> - Photonic LDOS for nanodisk using mirror symmetry (16 sec). <a href="matlab:beminfo('demodipstat10.m')">info</a>, <a href="matlab:eval('demodipstat10')">run</a></li><li><a href="matlab:edit('demodipstat11')">demodipstat11.m</a> - Lifetime reduction for dipole between sphere and layer (43 sec). <a href="matlab:beminfo('demodipstat11.m')">info</a>, <a href="matlab:eval('demodipstat11')">run</a></li></ul></div><h2 id="2">Retarded dipole excitation examples</h2><div><ul><li><a href="matlab:edit('demodipret1')">demodipret1.m</a> - Lifetime reduction for dipole above metallic nanosphere (3 sec). <a href="matlab:beminfo('demodipret1.m')">info</a>, <a href="matlab:eval('demodipret1')">run</a></li><li><a href="matlab:edit('demodipret2')">demodipret2.m</a> - Energy dependent lifetime for dipole above a nanosphere (1 min). <a href="matlab:beminfo('demodipret2.m')">info</a>, <a href="matlab:eval('demodipret2')">run</a></li><li><a href="matlab:edit('demodipret3')">demodipret3.m</a> - Photonic LDOS for a silver nanodisk (2 min). <a href="matlab:beminfo('demodipret3.m')">info</a>, <a href="matlab:eval('demodipret3')">run</a></li><li><a href="matlab:edit('demodipret4')">demodipret4.m</a> - Photonic LDOS for nanotriangle (3.5 min). <a href="matlab:beminfo('demodipret4.m')">info</a>, <a href="matlab:eval('demodipret4')">run</a></li><li><a href="matlab:edit('demodipret5')">demodipret5.m</a> - Photonic LDOS for nanotriangle (contd, 2 min). <a href="matlab:beminfo('demodipret5.m')">info</a>, <a href="matlab:eval('demodipret5')">run</a></li><li><a href="matlab:edit('demodipret6')">demodipret6.m</a> - Lifetime reduction for dipole above a coated nanosphere (67 sec). <a href="matlab:beminfo('demodipret6.m')">info</a>, <a href="matlab:eval('demodipret6')">run</a></li><li><a href="matlab:edit('demodipret7')">demodipret7.m</a> - Electric field for dipole above coated nanosphere (17 sec). <a href="matlab:beminfo('demodipret7.m')">info</a>, <a href="matlab:eval('demodipret7')">run</a></li></ul></div><div><ul><li><b>Layer structure</b></li></ul></div><div><ul><li><a href="matlab:edit('demodipret8')">demodipret8.m</a> - Lifetime reduction for dipole between sphere and layer (24 sec). <a href="matlab:beminfo('demodipret8.m')">info</a>, <a href="matlab:eval('demodipret8')">run</a></li><li><a href="matlab:edit('demodipret9')">demodipret9.m</a> - Electric field for dipole between sphere and layer (50 sec). <a href="matlab:beminfo('demodipret9.m')">info</a>, <a href="matlab:eval('demodipret9')">run</a></li><li><a href="matlab:edit('demodipret10')">demodipret10.m</a> - Photonic LDOS for nanodisk above layer (7 min ). <a href="matlab:beminfo('demodipret01.m')">info</a>, <a href="matlab:eval('demodipret10')">run</a></li><li><a href="matlab:edit('demodipret11')">demodipret11.m</a> - Electric field for dipole close to nanodisk and layer (32 sec). <a href="matlab:beminfo('demodipret11.m')">info</a>, <a href="matlab:eval('demodipret11')">run</a></li></ul></div><div><ul><li><b>Mirror symmetry</b></li></ul></div><div><ul><li><a href="matlab:edit('demodipret12')">demodipret12.m</a> - Dipole lifetime for nanosphere and mirror symmetry (4 sec). <a href="matlab:beminfo('demodipret12.m')">info</a>, <a href="matlab:eval('demodipret12')">run</a></li></ul></div><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Dipole excitation examples
+%
+% <<../figures/mnpbemlogo.jpg>>
+%
+% The runtimes of the following programs are given for my not overly fast
+% office computer (Intel i7-2600 CPU, 3.40 GHz, 8 GB RAM).
+%
+%% Quasistatic dipole excitation examples
+%
+% * <matlab:edit('demodipstat1') demodipstat1.m> - 
+% Lifetime reduction for dipole above metallic nanosphere (3 sec).
+% <matlab:beminfo('demodipstat1.m') info>, 
+% <matlab:eval('demodipstat1') run>
+% * <matlab:edit('demodipstat2') demodipstat2.m> - 
+% Energy dependent lifetime for dipole above a nanosphere (12 sec).
+% <matlab:beminfo('demodipstat2.m') info>, 
+% <matlab:eval('demodipstat2') run>
+% * <matlab:edit('demodipstat3') demodipstat3.m> - 
+% Electric field for dipole above metallic nanosphere (4 sec).
+% <matlab:beminfo('demodipstat3.m') info>, 
+% <matlab:eval('demodipstat3') run>
+% * <matlab:edit('demodipstat4') demodipstat4.m> - 
+% Photonic LDOS for a silver nanodisk (37 sec).
+% <matlab:beminfo('demodipstat4.m') info>, 
+% <matlab:eval('demodipstat4') run>
+%
+% * *Layer structure*
+%
+% * <matlab:edit('demodipstat5') demodipstat5.m> - 
+% Lifetime reduction for dipole between sphere and layer (7.5 sec).
+% <matlab:beminfo('demodipstat5.m') info>, 
+% <matlab:eval('demodipstat5') run>
+% * <matlab:edit('demodipstat6') demodipstat6.m> - 
+% Electric field for dipole between sphere and layer (22 sec).
+% <matlab:beminfo('demodipstat6.m') info>, 
+% <matlab:eval('demodipstat6') run>
+% * <matlab:edit('demodipstat7') demodipstat7.m> - 
+% Photonic LDOS for nanodisk above layer (36 sec).
+% <matlab:beminfo('demodipstat7.m') info>, 
+% <matlab:eval('demodipstat7') run>
+% * <matlab:edit('demodipstat8') demodipstat8.m> - 
+% Electric field for dipole close to nanodisk and layer (23 sec).
+% <matlab:beminfo('demodipstat8.m') info>, 
+% <matlab:eval('demodipstat8') run>
+%
+% * *Mirror symmetry*
+%
+% * <matlab:edit('demodipstat9') demodipstat9.m> - 
+% Dipole lifetime for nanosphere and mirror symmetry (4 sec).
+% <matlab:beminfo('demodipstat9.m') info>, 
+% <matlab:eval('demodipstat9') run>
+% * <matlab:edit('demodipstat10') demodipstat10.m> - 
+% Photonic LDOS for nanodisk using mirror symmetry (16 sec).
+% <matlab:beminfo('demodipstat10.m') info>, 
+% <matlab:eval('demodipstat10') run>
+% * <matlab:edit('demodipstat11') demodipstat11.m> - 
+% Lifetime reduction for dipole between sphere and layer (43 sec).
+% <matlab:beminfo('demodipstat11.m') info>, 
+% <matlab:eval('demodipstat11') run>
+%
+%% Retarded dipole excitation examples
+%
+% * <matlab:edit('demodipret1') demodipret1.m> - 
+% Lifetime reduction for dipole above metallic nanosphere (3 sec).
+% <matlab:beminfo('demodipret1.m') info>, 
+% <matlab:eval('demodipret1') run>
+% * <matlab:edit('demodipret2') demodipret2.m> - 
+% Energy dependent lifetime for dipole above a nanosphere (1 min).
+% <matlab:beminfo('demodipret2.m') info>, 
+% <matlab:eval('demodipret2') run>
+% * <matlab:edit('demodipret3') demodipret3.m> - 
+% Photonic LDOS for a silver nanodisk (2 min).
+% <matlab:beminfo('demodipret3.m') info>, 
+% <matlab:eval('demodipret3') run>
+% * <matlab:edit('demodipret4') demodipret4.m> - 
+% Photonic LDOS for nanotriangle (3.5 min).
+% <matlab:beminfo('demodipret4.m') info>, 
+% <matlab:eval('demodipret4') run>
+% * <matlab:edit('demodipret5') demodipret5.m> - 
+% Photonic LDOS for nanotriangle (contd, 2 min).
+% <matlab:beminfo('demodipret5.m') info>, 
+% <matlab:eval('demodipret5') run>
+% * <matlab:edit('demodipret6') demodipret6.m> - 
+% Lifetime reduction for dipole above a coated nanosphere (67 sec).
+% <matlab:beminfo('demodipret6.m') info>, 
+% <matlab:eval('demodipret6') run>
+% * <matlab:edit('demodipret7') demodipret7.m> - 
+% Electric field for dipole above coated nanosphere (17 sec).
+% <matlab:beminfo('demodipret7.m') info>, 
+% <matlab:eval('demodipret7') run>
+%
+% * *Layer structure*
+%
+% * <matlab:edit('demodipret8') demodipret8.m> - 
+% Lifetime reduction for dipole between sphere and layer (24 sec).
+% <matlab:beminfo('demodipret8.m') info>, 
+% <matlab:eval('demodipret8') run>
+% * <matlab:edit('demodipret9') demodipret9.m> - 
+% Electric field for dipole between sphere and layer (50 sec).
+% <matlab:beminfo('demodipret9.m') info>, 
+% <matlab:eval('demodipret9') run>
+% * <matlab:edit('demodipret10') demodipret10.m> - 
+% Photonic LDOS for nanodisk above layer (7 min ).
+% <matlab:beminfo('demodipret01.m') info>, 
+% <matlab:eval('demodipret10') run>
+% * <matlab:edit('demodipret11') demodipret11.m> - 
+% Electric field for dipole close to nanodisk and layer (32 sec).
+% <matlab:beminfo('demodipret11.m') info>, 
+% <matlab:eval('demodipret11') run>
+%
+% * *Mirror symmetry*
+%
+% * <matlab:edit('demodipret12') demodipret12.m> - 
+% Dipole lifetime for nanosphere and mirror symmetry (4 sec).
+% <matlab:beminfo('demodipret12.m') info>, 
+% <matlab:eval('demodipret12') run>
+%
+%
+% Copyright 2017 Ulrich Hohenester
+##### SOURCE END #####
+--></body></html>

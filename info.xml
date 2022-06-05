@@ -1,0 +1,22 @@
+<productinfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="optional">
+    <?xml-stylesheet type="text/xsl"href="optional"?>
+    <!-- info.xml file for the mytoolbox toolbox -->
+    <!-- Version 1.0 -->
+    <!-- Copyright (2014) (Ulrich Hohenester).-->
+    
+    <!-- Supply the following six elements in the order specified -->
+    <!-- (Required) element; matlabrelease content is not currently used -->
+    <matlabrelease>R2011b</matlabrelease>
+    <!-- (Required) The name element appears in the Contents pane -->
+    <name>MNPBEM</name>
+    <!-- (Required) The type elementidentifies your package; pick one: -->
+    <!-- matlab, toolbox, simulink, blockset, links_targets  -->
+    <type>toolbox</type>
+    <!-- (Optional) icon file to display in the Start button -->
+    <icon>sampleicon.gif</icon>
+    <!-- (Required if you supply help) relative path to help (HTML) folder -->
+    <help_location>help</help_location>
+    <!-- (Required if you supply help) icon used in the Help browser TOC -->
+    <help_contents_icon>$toolbox/matlab/icons/bookicon.gif</help_contents_icon>  
+</productinfo>

@@ -1,0 +1,262 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Planewave excitation examples</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_example1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Planewave excitation examples</h1><!--introduction--><p><img vspace="5" hspace="5" src="../figures/mnpbemlogo.jpg" alt=""> </p><p>The runtimes of the following programs are given for my not overly fast office computer (Intel i7-2600 CPU, 3.40 GHz, 8 GB RAM).</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Quasistatic planewave excitation examples</a></li><li><a href="#2">Retarded planewave excitation examples</a></li></ul></div><h2 id="1">Quasistatic planewave excitation examples</h2><div><ul><li><a href="matlab:edit('demospecstat1.m')">demospecstat1.m</a> - Light scattering of metallic nanosphere (2 sec). <a href="matlab:beminfo('demospecstat1.m')">info</a>, <a href="matlab:eval('demospecstat1')">run</a></li><li><a href="matlab:edit('demospecstat2.m')">demospecstat2.m</a> - Light scattering of metallic nanoellipsoid (4 sec). <a href="matlab:beminfo('demospecstat2.m')">info</a>, <a href="matlab:eval('demospecstat2')">run</a></li><li><a href="matlab:edit('demospecstat3.m')">demospecstat3.m</a> - Light scattering of coated metallic sphere (16 sec). <a href="matlab:beminfo('demospecstat3.m')">info</a>, <a href="matlab:eval('demospecstat3')">run</a></li><li><a href="matlab:edit('demospecstat4.m')">demospecstat4.m</a> - Field enhancement for coated metallic sphere (8 sec). <a href="matlab:beminfo('demospecstat4.m')">info</a>, <a href="matlab:eval('demospecstat4')">run</a></li><li><a href="matlab:edit('demospecstat5.m')">demospecstat5.m</a> - Light scattering of nanotriangle (5 sec). <a href="matlab:beminfo('demospecstat5.m')">info</a>, <a href="matlab:eval('demospecstat5')">run</a></li><li><a href="matlab:edit('demospecstat6.m')">demospecstat6.m</a> - Field enhancement for nanotriangle (7 sec). <a href="matlab:beminfo('demospecstat6.m')">info</a>, <a href="matlab:eval('demospecstat6')">run</a></li><li><a href="matlab:edit('demospecstat7.m')">demospecstat7.m</a> - Plasmonic eigenmodes for nanodisk (6 sec). <a href="matlab:beminfo('demospecstat7.m')">info</a>, <a href="matlab:eval('demospecstat7')">run</a></li><li><a href="matlab:edit('demospecstat8.m')">demospecstat8.m</a> - Light scattering of coupled nanotriangles (bowtie, 9 sec). <a href="matlab:beminfo('demospecstat8.m')">info</a>, <a href="matlab:eval('demospecstat8')">run</a></li><li><a href="matlab:edit('demospecstat9.m')">demospecstat9.m</a> - Field enhancement for coupled nanotriangles (bowtie, 14 sec). <a href="matlab:beminfo('demospecstat9.m')">info</a>, <a href="matlab:eval('demospecstat9')">run</a></li></ul></div><p><b>Substrate</b></p><div><ul><li><a href="matlab:edit('demospecstat10.m')">demospecstat10.m</a> - Light scattering of metallic nanosphere above substrate (4 sec). <a href="matlab:beminfo('demospecstat10.m')">info</a>, <a href="matlab:eval('demospecstat10')">run</a></li><li><a href="matlab:edit('demospecstat11.m')">demospecstat11.m</a> - Field enhancement for metallic sphere above substrate (4 sec). <a href="matlab:beminfo('demospecstat11.m')">info</a>, <a href="matlab:eval('demospecstat11')">run</a></li><li><a href="matlab:edit('demospecstat12.m')">demospecstat12.m</a> - Light scattering of nanodisk above substrate (8 sec). <a href="matlab:beminfo('demospecstat12.m')">info</a>, <a href="matlab:eval('demospecstat12')">run</a></li><li><a href="matlab:edit('demospecstat13.m')">demospecstat13.m</a> - Field enhancement for metallic disk above substrate (13 sec). <a href="matlab:beminfo('demospecstat13.m')">info</a>, <a href="matlab:eval('demospecstat13')">run</a></li></ul></div><p><b>Mirror symmetry and iterative BEM solver</b></p><div><ul><li><a href="matlab:edit('demospecstat14.m')">demospecstat14.m</a> - Light scattering of nanosphere with mirror symmetry (2 sec). <a href="matlab:beminfo('demospecstat14.m')">info</a>, <a href="matlab:eval('demospecstat14')">run</a></li><li><a href="matlab:edit('demospecstat15.m')">demospecstat15.m</a> - Light scattering of nanodisk with mirror symmetry (30 sec). <a href="matlab:beminfo('demospecstat15.m')">info</a>, <a href="matlab:eval('demospecstat15')">run</a></li><li><a href="matlab:edit('demospecstat16.m')">demospecstat16.m</a> - Field enhancement for nanodisk with mirror symmetry (9 sec). <a href="matlab:beminfo('demospecstat16.m')">info</a>, <a href="matlab:eval('demospecstat16')">run</a></li><li><a href="matlab:edit('demospecstat17.m')">demospecstat17.m</a> - Light scattering of nanorod using iterative BEM solver (4 min). <a href="matlab:beminfo('demospecstat17.m')">info</a>, <a href="matlab:eval('demospecstat17')">run</a></li><li><a href="matlab:edit('demospecstat18.m')">demospecstat18.m</a> - Auxiliary information for iterative BEM solver (30 sec). <a href="matlab:beminfo('demospecstat18.m')">info</a>, <a href="matlab:eval('demospecstat18')">run</a></li></ul></div><p><b>Nonlocal dielectric function</b></p><div><ul><li><a href="matlab:edit('demospecstat19.m')">demospecstat19.m</a> - Light scattering of nanosphere using nonlocality (5 sec). <a href="matlab:beminfo('demospecstat19.m')">info</a>, <a href="matlab:eval('demospecstat19')">run</a></li><li><a href="matlab:edit('demospecstat20.m')">demospecstat20.m</a> - Light scattering of coupled nanospheres using nonlocality (90 sec). <a href="matlab:beminfo('demospecstat20.m')">info</a>, <a href="matlab:eval('demospecstat20')">run</a></li></ul></div><h2 id="2">Retarded planewave excitation examples</h2><div><ul><li><a href="matlab:edit('demospecret1.m')">demospecret1.m</a> - Light scattering of metallic nanosphere (7 sec). <a href="matlab:beminfo('demospecret1.m')">info</a>, <a href="matlab:eval('demospecret1')">run</a></li><li><a href="matlab:edit('demospecret2.m')">demospecret2.m</a> - Light scattering of metallic nanodisk (18 sec). <a href="matlab:beminfo('demospecret2.m')">info</a>, <a href="matlab:eval('demospecret3')">run</a></li><li><a href="matlab:edit('demospecret3.m')">demospecret3.m</a> - Field enhancement for nanodisk (20 sec). <a href="matlab:beminfo('demospecret3.m')">info</a>, <a href="matlab:eval('demospecret3')">run</a></li><li><a href="matlab:edit('demospecret4.m')">demospecret4.m</a> - Spectrum for Au nanosphere in Ag nanocube (2 min). <a href="matlab:beminfo('demospecret4.m')">info</a>, <a href="matlab:eval('demospecret4')">run</a></li><li><a href="matlab:edit('demospecret5.m')">demospecret5.m</a> - Field enhancement for Au nanosphere in Ag nanocube (1 min). <a href="matlab:beminfo('demospecret5.m')">info</a>, <a href="matlab:eval('demospecret5')">run</a></li></ul></div><p><b>Substrate and layer structure</b></p><div><ul><li><a href="matlab:edit('demospecret6.m')">demospecret6.m</a> - Light scattering of metallic nanosphere above substrate (36 sec). <a href="matlab:beminfo('demospecret6.m')">info</a>, <a href="matlab:eval('demospecret6')">run</a></li><li><a href="matlab:edit('demospecret7.m')">demospecret7.m</a> - Field enhancement of metallic nanosphere above substrate (40 sec). <a href="matlab:beminfo('demospecret7.m')">info</a>, <a href="matlab:eval('demospecret7')">run</a></li><li><a href="matlab:edit('demospecret8.m')">demospecret8.m</a> - Scattering spectra for metallic nanodisk on substrate (1 min). <a href="matlab:beminfo('demospecret8.m')">info</a>, <a href="matlab:eval('demospecret8')">run</a></li><li><a href="matlab:edit('demospecret9.m')">demospecret9.m</a> - Scattering spectra for substrate using PARFOR loop (40 sec). <a href="matlab:beminfo('demospecret9.m')">info</a>, <a href="matlab:eval('demospecret9')">run</a></li><li><a href="matlab:edit('demospecret10.m')">demospecret10.m</a> - Nearfield enhancement for metallic nanodisk on substrate (47 sec). <a href="matlab:beminfo('demospecret10.m')">info</a>, <a href="matlab:eval('demospecret10')">run</a></li><li><a href="matlab:edit('demospecret11.m')">demospecret11.m</a> - Scattering spectra for two nanospheres in layer (2 min). <a href="matlab:beminfo('demospecret11.m')">info</a>, <a href="matlab:eval('demospecret11')">run</a></li><li><a href="matlab:edit('demospecret12.m')">demospecret12.m</a> - Nearfield enhancement for two nanospheres in layer (1 min). <a href="matlab:beminfo('demospecret12.m')">info</a>, <a href="matlab:eval('demospecret12')">run</a></li><li><a href="matlab:edit('demospecret13.m')">demospecret13.m</a> - Spectra for metallic nanodisk approaching substrate (8 min). <a href="matlab:beminfo('demospecret13.m')">info</a>, <a href="matlab:eval('demospecret13')">run</a></li><li><a href="matlab:edit('demospecret14.m')">demospecret14.m</a> - Spectra for metallic nanodisk on top of substrate (15 min). <a href="matlab:beminfo('demospecret14.m')">info</a>, <a href="matlab:eval('demospecret14')">run</a></li></ul></div><p><b>Mirror symmetry and iterative BEM solver</b></p><div><ul><li><a href="matlab:edit('demospecret15.m')">demospecret15.m</a> - Light scattering of nanosphere with mirror symmetry (13 sec). <a href="matlab:beminfo('demospecret15.m')">info</a>, <a href="matlab:eval('demospecret15')">run</a></li><li><a href="matlab:edit('demospecret16.m')">demospecret16.m</a> - Light scattering of nanodisk with mirror symmetry (3 min). <a href="matlab:beminfo('demospecret16.m')">info</a>, <a href="matlab:eval('demospecret16')">run</a></li><li><a href="matlab:edit('demospecret17.m')">demospecret17.m</a> - Light scattering of nanorod using iterative BEM solver (35 min). <a href="matlab:beminfo('demospecret17.m')">info</a>, <a href="matlab:eval('demospecret17')">run</a></li><li><a href="matlab:edit('demospecret18.m')">demospecret18.m</a> - Timing for iterative BEM solver (70 min). <a href="matlab:beminfo('demospecret18.m')">info</a>, <a href="matlab:eval('demospecret18')">run</a></li><li><a href="matlab:edit('demospecret19.m')">demospecret19.m</a> - Light scattering of sphere chain using iterative BEM solver (19 min). <a href="matlab:beminfo('demospecret19.m')">info</a>, <a href="matlab:eval('demospecret19')">run</a></li><li><a href="matlab:edit('demospecret20.m')">demospecret20.m</a> - Nanorod above substrate using itertive BEM solver (2 hours). <a href="matlab:beminfo('demospecret20.m')">info</a>, <a href="matlab:eval('demospecret20')">run</a></li></ul></div><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Planewave excitation examples
+%
+% <<../figures/mnpbemlogo.jpg>>
+%
+% The runtimes of the following programs are given for my not overly fast
+% office computer (Intel i7-2600 CPU, 3.40 GHz, 8 GB RAM).
+%
+%% Quasistatic planewave excitation examples
+%
+% * <matlab:edit('demospecstat1.m') demospecstat1.m> - 
+% Light scattering of metallic nanosphere (2 sec).
+% <matlab:beminfo('demospecstat1.m') info>, 
+% <matlab:eval('demospecstat1') run>
+% * <matlab:edit('demospecstat2.m') demospecstat2.m> - 
+% Light scattering of metallic nanoellipsoid (4 sec).
+% <matlab:beminfo('demospecstat2.m') info>, 
+% <matlab:eval('demospecstat2') run>
+% * <matlab:edit('demospecstat3.m') demospecstat3.m> - 
+% Light scattering of coated metallic sphere (16 sec).
+% <matlab:beminfo('demospecstat3.m') info>, 
+% <matlab:eval('demospecstat3') run>
+% * <matlab:edit('demospecstat4.m') demospecstat4.m> - 
+% Field enhancement for coated metallic sphere (8 sec).
+% <matlab:beminfo('demospecstat4.m') info>, 
+% <matlab:eval('demospecstat4') run>
+% * <matlab:edit('demospecstat5.m') demospecstat5.m> - 
+% Light scattering of nanotriangle (5 sec).
+% <matlab:beminfo('demospecstat5.m') info>, 
+% <matlab:eval('demospecstat5') run>
+% * <matlab:edit('demospecstat6.m') demospecstat6.m> - 
+% Field enhancement for nanotriangle (7 sec).
+% <matlab:beminfo('demospecstat6.m') info>, 
+% <matlab:eval('demospecstat6') run>
+% * <matlab:edit('demospecstat7.m') demospecstat7.m> - 
+% Plasmonic eigenmodes for nanodisk (6 sec).
+% <matlab:beminfo('demospecstat7.m') info>, 
+% <matlab:eval('demospecstat7') run>
+% * <matlab:edit('demospecstat8.m') demospecstat8.m> - 
+% Light scattering of coupled nanotriangles (bowtie, 9 sec).
+% <matlab:beminfo('demospecstat8.m') info>, 
+% <matlab:eval('demospecstat8') run>
+% * <matlab:edit('demospecstat9.m') demospecstat9.m> - 
+% Field enhancement for coupled nanotriangles (bowtie, 14 sec).
+% <matlab:beminfo('demospecstat9.m') info>, 
+% <matlab:eval('demospecstat9') run>
+%
+% *Substrate*
+% 
+% * <matlab:edit('demospecstat10.m') demospecstat10.m> - 
+% Light scattering of metallic nanosphere above substrate (4 sec).
+% <matlab:beminfo('demospecstat10.m') info>, 
+% <matlab:eval('demospecstat10') run>
+% * <matlab:edit('demospecstat11.m') demospecstat11.m> - 
+% Field enhancement for metallic sphere above substrate (4 sec).
+% <matlab:beminfo('demospecstat11.m') info>, 
+% <matlab:eval('demospecstat11') run>
+% * <matlab:edit('demospecstat12.m') demospecstat12.m> - 
+% Light scattering of nanodisk above substrate (8 sec).
+% <matlab:beminfo('demospecstat12.m') info>, 
+% <matlab:eval('demospecstat12') run>
+% * <matlab:edit('demospecstat13.m') demospecstat13.m> - 
+% Field enhancement for metallic disk above substrate (13 sec).
+% <matlab:beminfo('demospecstat13.m') info>, 
+% <matlab:eval('demospecstat13') run>
+%
+% *Mirror symmetry and iterative BEM solver*
+%
+% * <matlab:edit('demospecstat14.m') demospecstat14.m> - 
+% Light scattering of nanosphere with mirror symmetry (2 sec).
+% <matlab:beminfo('demospecstat14.m') info>, 
+% <matlab:eval('demospecstat14') run>
+% * <matlab:edit('demospecstat15.m') demospecstat15.m> - 
+% Light scattering of nanodisk with mirror symmetry (30 sec).
+% <matlab:beminfo('demospecstat15.m') info>, 
+% <matlab:eval('demospecstat15') run>
+% * <matlab:edit('demospecstat16.m') demospecstat16.m> - 
+% Field enhancement for nanodisk with mirror symmetry (9 sec).
+% <matlab:beminfo('demospecstat16.m') info>, 
+% <matlab:eval('demospecstat16') run>
+% * <matlab:edit('demospecstat17.m') demospecstat17.m> - 
+% Light scattering of nanorod using iterative BEM solver (4 min).
+% <matlab:beminfo('demospecstat17.m') info>, 
+% <matlab:eval('demospecstat17') run>
+% * <matlab:edit('demospecstat18.m') demospecstat18.m> - 
+% Auxiliary information for iterative BEM solver (30 sec).
+% <matlab:beminfo('demospecstat18.m') info>, 
+% <matlab:eval('demospecstat18') run>
+%
+% *Nonlocal dielectric function*
+%
+% * <matlab:edit('demospecstat19.m') demospecstat19.m> - 
+% Light scattering of nanosphere using nonlocality (5 sec).
+% <matlab:beminfo('demospecstat19.m') info>, 
+% <matlab:eval('demospecstat19') run>
+% * <matlab:edit('demospecstat20.m') demospecstat20.m> - 
+% Light scattering of coupled nanospheres using nonlocality (90 sec).
+% <matlab:beminfo('demospecstat20.m') info>, 
+% <matlab:eval('demospecstat20') run>
+%
+%% Retarded planewave excitation examples
+%
+% * <matlab:edit('demospecret1.m') demospecret1.m> -
+% Light scattering of metallic nanosphere (7 sec).
+% <matlab:beminfo('demospecret1.m') info>, 
+% <matlab:eval('demospecret1') run>
+% * <matlab:edit('demospecret2.m') demospecret2.m> - 
+% Light scattering of metallic nanodisk (18 sec).
+% <matlab:beminfo('demospecret2.m') info>, 
+% <matlab:eval('demospecret3') run>
+% * <matlab:edit('demospecret3.m') demospecret3.m> - 
+% Field enhancement for nanodisk (20 sec).
+% <matlab:beminfo('demospecret3.m') info>, 
+% <matlab:eval('demospecret3') run>
+% * <matlab:edit('demospecret4.m') demospecret4.m> - 
+% Spectrum for Au nanosphere in Ag nanocube (2 min).
+% <matlab:beminfo('demospecret4.m') info>, 
+% <matlab:eval('demospecret4') run>
+% * <matlab:edit('demospecret5.m') demospecret5.m> -
+% Field enhancement for Au nanosphere in Ag nanocube (1 min).
+% <matlab:beminfo('demospecret5.m') info>, 
+% <matlab:eval('demospecret5') run>
+%
+% *Substrate and layer structure*
+%
+% * <matlab:edit('demospecret6.m') demospecret6.m> - 
+% Light scattering of metallic nanosphere above substrate (36 sec).
+% <matlab:beminfo('demospecret6.m') info>, 
+% <matlab:eval('demospecret6') run>
+% * <matlab:edit('demospecret7.m') demospecret7.m> - 
+% Field enhancement of metallic nanosphere above substrate (40 sec).
+% <matlab:beminfo('demospecret7.m') info>, 
+% <matlab:eval('demospecret7') run>
+% * <matlab:edit('demospecret8.m') demospecret8.m> - 
+% Scattering spectra for metallic nanodisk on substrate (1 min).
+% <matlab:beminfo('demospecret8.m') info>, 
+% <matlab:eval('demospecret8') run>
+% * <matlab:edit('demospecret9.m') demospecret9.m> - 
+% Scattering spectra for substrate using PARFOR loop (40 sec).
+% <matlab:beminfo('demospecret9.m') info>, 
+% <matlab:eval('demospecret9') run>
+% * <matlab:edit('demospecret10.m') demospecret10.m> - 
+% Nearfield enhancement for metallic nanodisk on substrate (47 sec).
+% <matlab:beminfo('demospecret10.m') info>, 
+% <matlab:eval('demospecret10') run>
+% * <matlab:edit('demospecret11.m') demospecret11.m> - 
+% Scattering spectra for two nanospheres in layer (2 min).
+% <matlab:beminfo('demospecret11.m') info>, 
+% <matlab:eval('demospecret11') run>
+% * <matlab:edit('demospecret12.m') demospecret12.m> - 
+% Nearfield enhancement for two nanospheres in layer (1 min).
+% <matlab:beminfo('demospecret12.m') info>, 
+% <matlab:eval('demospecret12') run>
+% * <matlab:edit('demospecret13.m') demospecret13.m> - 
+% Spectra for metallic nanodisk approaching substrate (8 min).
+% <matlab:beminfo('demospecret13.m') info>, 
+% <matlab:eval('demospecret13') run>
+% * <matlab:edit('demospecret14.m') demospecret14.m> - 
+% Spectra for metallic nanodisk on top of substrate (15 min).
+% <matlab:beminfo('demospecret14.m') info>, 
+% <matlab:eval('demospecret14') run>
+%
+% *Mirror symmetry and iterative BEM solver*
+%
+% * <matlab:edit('demospecret15.m') demospecret15.m> - 
+% Light scattering of nanosphere with mirror symmetry (13 sec).
+% <matlab:beminfo('demospecret15.m') info>, 
+% <matlab:eval('demospecret15') run>
+% * <matlab:edit('demospecret16.m') demospecret16.m> - 
+% Light scattering of nanodisk with mirror symmetry (3 min).
+% <matlab:beminfo('demospecret16.m') info>, 
+% <matlab:eval('demospecret16') run>
+% * <matlab:edit('demospecret17.m') demospecret17.m> - 
+% Light scattering of nanorod using iterative BEM solver (35 min).
+% <matlab:beminfo('demospecret17.m') info>, 
+% <matlab:eval('demospecret17') run>
+% * <matlab:edit('demospecret18.m') demospecret18.m> - 
+% Timing for iterative BEM solver (70 min).
+% <matlab:beminfo('demospecret18.m') info>, 
+% <matlab:eval('demospecret18') run>
+% * <matlab:edit('demospecret19.m') demospecret19.m> - 
+% Light scattering of sphere chain using iterative BEM solver (19 min).
+% <matlab:beminfo('demospecret19.m') info>, 
+% <matlab:eval('demospecret19') run>
+% * <matlab:edit('demospecret20.m') demospecret20.m> - 
+% Nanorod above substrate using itertive BEM solver (2 hours).
+% <matlab:beminfo('demospecret20.m') info>, 
+% <matlab:eval('demospecret20') run>
+%
+%
+% Copyright 2017 Ulrich Hohenester
+##### SOURCE END #####
+--></body></html>

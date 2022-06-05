@@ -1,0 +1,177 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Options for the MNPBEM toolbox</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_ug_options.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Options for the MNPBEM toolbox</h1><!--introduction--><p>The performance of the MNPBEM toolbox can be controlled through an option structure.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initialization</a></li><li><a href="#3">BEM options</a></li></ul></div><h2 id="1">Initialization</h2><pre class="codeinput"><span class="comment">%  initialize option structure and set properties</span>
+op = bemoptions( PropertyName, PropertyValue );
+<span class="comment">%  add additional arguments to option structure</span>
+op = bemoptions( op, PropertyName, PropertyValue );
+</pre><p><tt>op</tt> is a structure that holds the properties that control the BEM simulation.  Once <tt>op</tt> is initialized, it can be passed to the MNPBEM classes through</p><pre class="codeinput"><span class="comment">%  pass option structure OP to class BEMCLASS</span>
+obj = bemclass( varargin, op );
+<span class="comment">%  pass additional arguments</span>
+obj = bemclass( varargin, op, PropertyName, PropertyValue );
+</pre><h2 id="3">BEM options</h2><div><ul><li><b><tt>'AbsCutoff'</tt></b> controls the refined particle boundary integration, as discussed in <a href="bem_ug_integration.html">particle integration</a>.</li><li><b><tt>'deriv'</tt></b> selects between Cartesian coordinates (<tt>'cart'</tt>, default) and only surface normals (<tt>'norm'</tt>) for Green functions in the BEM solvers.</li><li><b><tt>'eels.cutoff'</tt></b> is a cutoff parameter for EELS simulations that determines boundary elements where a refined integration is performed.</li><li><b><tt>'eels.refine'</tt></b> controls the number of integration points for EELS simulations.</li><li><b><tt>'greentab'</tt></b> is the tabulated reflected Green function needed for the simulation of layer structures and substrates.</li><li><b><tt>'interp'</tt></b> selects between flat (<tt>'flat'</tt>) and curved (<tt>'curv'</tt>) particle boundaries.</li><li><b><tt>'layer'</tt></b> defines a layer structure or substrate.</li><li><b><tt>'nev'</tt></b> sets the number of eigenvalues for BEM solvers with an eigenmode expansion.</li><li><b><tt>'npol'</tt></b> controls the number of integration points for diagonal Green function elements.</li><li><b><tt>'order'</tt></b> controls the order for the Taylor series expansion in the evaluation of the retarded Green function.</li><li><b><tt>'pinfty'</tt></b> provides a user-defined unit-sphere discretization used for the computation of scattering rates.</li><li><b><tt>'refine'</tt></b> controls the number of integration points for off-diagonal Green function elements.</li><li><b><tt>'RelCutoff'</tt></b> controls the refined particle boundary integration, as discussed in <a href="bem_ug_integration.html">particle integration</a>.</li><li><b><tt>'rule'</tt></b> selects the integration rule (default 18) for triangle integration.</li><li><b><tt>'sim'</tt></b> selects between quasistatic (<tt>'stat'</tt>) and retarded (<tt>'ret'</tt>) simulations.</li><li><b><tt>'sym'</tt></b> selects a BEM simulation with mirror symmetry.</li><li><b><tt>'waitbar'</tt></b> controls whether the progress of various BEM functions is reported through a waitbar or not.</li></ul></div><p>The following options can be passed to <tt>layerstructure</tt> objects and can be set through <tt>op=layerstructure.options</tt></p><div><ul><li><b><tt>'ztol'</tt></b> boundary elements located closer than <tt>ztol</tt> to the layer interface are considered to belong to the layer.</li><li><b><tt>'rmin'</tt></b> minimum radial distance for Green function tabulation and evalulation.</li><li><b><tt>'zmin'</tt></b> minimum distance to layer for Green function tabulation and evalulation.</li><li><b><tt>'semi'</tt></b> semicircle for evalulation of reflected Green function in complex plane, see M. Paulus et al., PRE <b>62</b>, 5797 (2000).</li><li><b><tt>'ratio'</tt></b> controls whether Bessel or Hankel functions are used in the evalulation of the reflected Green function, see M. Paulus et al.</li><li><b><tt>'op'</tt></b> additional option structure that controls <a href="matlab:doc('ode45')">ode45</a> integration in the complex plane.</li></ul></div><p>The following options can be passed to <tt>bemiter</tt> objects and can be set through <tt>op.iter=bemiter.options</tt> (see also <a href="bem_ug_iter.html">iterative BEM solvers</a>)</p><div><ul><li><b><tt>'solver'</tt></b> selects between the different iterative solvers <a href="matlab:doc('cgs')">cgs</a>, <a href="matlab:doc('bicgstab')">bicgstab</a>, and <a href="matlab:doc('gmres')">gmres</a> for the solution of the system of linear equations underlying our BEM approach.</li><li><b><tt>'tol'</tt></b> selects the tolerance of the iterative solver.</li><li><b><tt>'maxit'</tt></b> determines the maximum number of iterations.</li><li><b><tt>'restart'</tt></b> is the number of restarts used by <a href="matlab:doc('gmres')">gmres</a>.</li><li><b><tt>'precond'</tt></b> determines the preconditioner.  At present we recommend to not change the default setting <tt>'hmat'</tt>.</li><li><b><tt>'output'</tt></b> turns on (1) or off (0) any intermediate output of the iterative BEM solver.</li><li><b><tt>'cleaf'</tt></b> determines the minimum cluster size.</li><li><b><tt>'htol'</tt></b> is the tolerance for the H-matrix compression.</li><li><b><tt>'kmax'</tt></b> is the maximum rank for H-matrix compression.</li><li><b><tt>'fadmiss'</tt></b> is a function for the admissibility criterion for cluster pairs.</li></ul></div><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Options for the MNPBEM toolbox
+%
+% The performance of the MNPBEM toolbox can be controlled through an
+% option structure.
+%
+%% Initialization
+
+%  initialize option structure and set properties
+op = bemoptions( PropertyName, PropertyValue );
+%  add additional arguments to option structure
+op = bemoptions( op, PropertyName, PropertyValue );
+
+%%
+% |op| is a structure that holds the properties that control the BEM
+% simulation.  Once |op| is initialized, it can be passed to the MNPBEM
+% classes through
+
+%  pass option structure OP to class BEMCLASS
+obj = bemclass( varargin, op );
+%  pass additional arguments
+obj = bemclass( varargin, op, PropertyName, PropertyValue );
+
+%% BEM options
+%
+% * *|'AbsCutoff'|* controls the refined particle boundary integration, as
+% discussed in <bem_ug_integration.html particle integration>.
+% * *|'deriv'|* selects between Cartesian coordinates (|'cart'|, default)
+% and only surface normals (|'norm'|) for Green functions in the BEM
+% solvers.
+% * *|'eels.cutoff'|* is a cutoff parameter for EELS simulations that
+% determines boundary elements where a refined integration is performed.
+% * *|'eels.refine'|* controls the number of integration points for EELS
+% simulations.
+% * *|'greentab'|* is the tabulated reflected Green function needed for the
+% simulation of layer structures and substrates.
+% * *|'interp'|* selects between flat (|'flat'|) and curved (|'curv'|)
+% particle boundaries.
+% * *|'layer'|* defines a layer structure or substrate.
+% * *|'nev'|* sets the number of eigenvalues for BEM solvers with an
+% eigenmode expansion.
+% * *|'npol'|* controls the number of integration points for diagonal Green
+% function elements.
+% * *|'order'|* controls the order for the Taylor series expansion in the
+% evaluation of the retarded Green function.
+% * *|'pinfty'|* provides a user-defined unit-sphere discretization used
+% for the computation of scattering rates.
+% * *|'refine'|* controls the number of integration points for off-diagonal
+% Green function elements.
+% * *|'RelCutoff'|* controls the refined particle boundary integration, as
+% discussed in <bem_ug_integration.html particle integration>.
+% * *|'rule'|* selects the integration rule (default 18) for triangle
+% integration.
+% * *|'sim'|* selects between quasistatic (|'stat'|) and retarded (|'ret'|)
+% simulations.
+% * *|'sym'|* selects a BEM simulation with mirror symmetry.
+% * *|'waitbar'|* controls whether the progress of various BEM functions is
+% reported through a waitbar or not.
+%
+% The following options can be passed to |layerstructure| objects and can
+% be set through |op=layerstructure.options|
+%
+% * *|'ztol'|* boundary elements located closer than |ztol| to the layer
+% interface are considered to belong to the layer.
+% * *|'rmin'|* minimum radial distance for Green function tabulation and
+% evalulation.
+% * *|'zmin'|* minimum distance to layer for Green function tabulation and
+% evalulation.
+% * *|'semi'|* semicircle for evalulation of reflected Green function in
+% complex plane, see M. Paulus et al., PRE *62*, 5797 (2000).
+% * *|'ratio'|* controls whether Bessel or Hankel functions are used in the
+% evalulation of the reflected Green function, see M. Paulus et al.
+% * *|'op'|* additional option structure that controls <matlab:doc('ode45')
+% ode45> integration in the complex plane.
+%
+% The following options can be passed to |bemiter| objects and can
+% be set through |op.iter=bemiter.options| (see also <bem_ug_iter.html
+% iterative BEM solvers>)
+%
+% * *|'solver'|* selects between the different iterative solvers
+% <matlab:doc('cgs') cgs>, <matlab:doc('bicgstab') bicgstab>, and
+% <matlab:doc('gmres') gmres> for the solution of the system of linear
+% equations underlying our BEM approach.
+% * *|'tol'|* selects the tolerance of the iterative solver.
+% * *|'maxit'|* determines the maximum number of iterations.
+% * *|'restart'|* is the number of restarts used by <matlab:doc('gmres')
+% gmres>.
+% * *|'precond'|* determines the preconditioner.  At present we recommend
+% to not change the default setting |'hmat'|.
+% * *|'output'|* turns on (1) or off (0) any intermediate output of the
+% iterative BEM solver.
+% * *|'cleaf'|* determines the minimum cluster size.
+% * *|'htol'|* is the tolerance for the H-matrix compression.
+% * *|'kmax'|* is the maximum rank for H-matrix compression.
+% * *|'fadmiss'|* is a function for the admissibility criterion for cluster
+% pairs.
+%
+% Copyright 2017 Ulrich Hohenester
+##### SOURCE END #####
+--></body></html>

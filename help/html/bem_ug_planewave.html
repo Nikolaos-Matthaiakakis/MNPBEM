@@ -1,0 +1,294 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Plane wave excitation</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_ug_planewave.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Plane wave excitation</h1><!--introduction--><p>Plane wave excitations of metallic nanoparticles allow to compute scattering, extinction, and absorption cross sections.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initialization</a></li><li><a href="#3">Methods</a></li><li><a href="#7">Implementation</a></li><li><a href="#9">Examples</a></li></ul></div><h2 id="1">Initialization</h2><pre class="codeinput"><span class="comment">%  initialize PLANEWAVE object</span>
+exc = planewave( pol, dir, op );
+<span class="comment">%  pass additional arguments</span>
+exc = planewave( pol, dir, op, PropertyName, PropertyValue );
+</pre><p>In the initialization, the following parameters and additional properties are used</p><div><ul><li><b><tt>pol</tt></b> is the light polarization, several polarizations can be computed by providing an array <tt>[pol1;pol2;...]</tt>.</li><li><b><tt>dir</tt></b> is the light propagation direction, several directions can be computed by providing an array <tt>[dir1;dir2;...]</tt> of same size as <tt>pol</tt>. For quasistatic simulations the <tt>dir</tt> argument can be also omitted.</li><li><b><tt>op</tt></b> is the option structure for the MNPBEM simulations.</li><li><b><tt>'medium'</tt></b> selects a medium through which the particle is excited. By default the embedding medium corresponding to the first argument of the <tt>eps</tt> cell of <tt>comparticle</tt> objects is taken.</li><li><b><tt>'pinfty'</tt></b> provides a user-defined unit-sphere discretization for the computation of the electromagnetic fields at infinity.</li></ul></div><p><tt>planewave</tt> is a wrapper function that selects from the options and property settings one of several classes.</p><h2 id="3">Methods</h2><p>Once the <tt>planewave</tt> excitation is initialized, one can compute the excitation potentials at the boundary of a <tt>comparticle</tt> object at a given wavelength <tt>enei</tt> according to</p><pre class="codeinput"><span class="comment">%  compute excitation potentials at the boundary of particle P</span>
+pot = exc( p, enei );
+<span class="comment">%  one can also directly use them in the call to a BEM solver</span>
+sig = bem \ exc( p, enei );
+</pre><p>In addition to excitations, <tt>planewave</tt> also allows to compute the various cross sections according to</p><pre class="codeinput"><span class="comment">%  compute scattering, extinction, and absorption cross section</span>
+sca = exc.sca( sig );
+ext = exc.ext( sig );
+abe = exc.abs( sig );
+</pre><p>For retarded simulations, the calling sequence <tt>[sca,dsca]=exc.sca(sig)</tt> returns both the total cross sections (for the different polarizations and propagation directions) and the corresponding differential cross sections.  The values are given on the unit sphere defined through <tt>pinfty</tt>.  The differential cross sections (here for the first polarization) can be plotted with</p><pre class="codeinput"><span class="comment">%  compute total and differential cross section</span>
+[ sca, dsca ] = exc.sca( sig );
+<span class="comment">%  plot differential scattering cross section</span>
+plot( dsca.p, dsca.dsca );
+<span class="comment">%  plot differential cross section for deformed sphere</span>
+plot( trispherescale( pinfty, dsca( :, 1 ), 1 ), dsca( :, 1 ) );
+</pre><p><img vspace="5" hspace="5" src="../figures/trispherescale.jpg" alt=""> </p><h2 id="7">Implementation</h2><p>In the quasistatic simulations, the cross sections are computed from the induced dipole moments of the nanoparticle</p><p><img src="bem_ug_planewave_eq17667519615968313802.png" alt="$$ P_{\rm sca}=\frac{8\pi}3 k^4\,|{\bf d}_\lambda|^2\,,\quad&#xA;   P_{\rm abs}=4\pi k\,\Im m&#xA;     \bigl(\hat{\bf e}_\lambda\cdot{\bf d}_\lambda\bigr)\,, $$"></p><p>where <img src="bem_ug_planewave_eq07657233533591063549.png" alt="$\lambda$"> denotes the different polarizations <img src="bem_ug_planewave_eq00774361589356899468.png" alt="$\hat{\bf e}$">.  In the retarded simulations the pertinent equations are</p><p><img src="bem_ug_planewave_eq04124450690891365025.png" alt="$$ P_{\rm sca}=n_b\oint \Re e\,{\bf n}\cdot\bigl\{&#xA;     {\bf E}\times{\bf B}^*\bigr\}\,da \,,\quad&#xA;   P_{\rm ext}=-\frac 1{n_b}\oint \Re e\,{\bf n}\cdot\bigl\{&#xA;     {\bf E}\times{\bf B}_{\rm inc}^*+{\bf E}_{\rm inc}^*\times{\bf B}&#xA;   \bigr\}\,da\,, $$"></p><p>where <img src="bem_ug_planewave_eq17246067459633404187.png" alt="$n_b$"> is the refractive index of the embedding medium, <img src="bem_ug_planewave_eq05526548562092793357.png" alt="${\bf E}$">, <img src="bem_ug_planewave_eq14151484680213830062.png" alt="${\bf B}$"> are the scattered electromagnetic fields, and <img src="bem_ug_planewave_eq09953126767856047396.png" alt="${\bf E}_{\rm inc}$">, <img src="bem_ug_planewave_eq01795497545971322859.png" alt="${\bf B}_{\rm inc}$"> are the incoming electromagnetic fields of the plane-wave excitation.  The integration extends over the (detector) surface defined through <tt>pinfty</tt>.  For the calculation of the extinction cross sections, we employ the optical theorem.</p><p>For substrates or layer structures, we have used the following literature to compute the extinction cross section:</p><div><ul><li>Lytle et al, Phys. Rev. E <b>71</b>, 056610 (2005).</li><li>Dahan and Greffet, Optics Express <b>20</b>, A530 (2012).</li></ul></div><p>In the toolbox the extinction cross section is computed according to</p><p><img src="bem_ug_planewave_eq04729468017891919168.png" alt="$$ P_{\rm ext}=\frac{4\pi}{k_r}\Im m\left(&#xA;    {\bf E}_r^*\cdot{\bf F}_r+{\bf E}_t^*\cdot{\bf F}_t\right). $$"></p><p>Here <img src="bem_ug_planewave_eq01125414440958829812.png" alt="${\bf E}_{r,t}$"> are the electric fields of the reflected and transmitted plane wave excitation, and <img src="bem_ug_planewave_eq02451983632341758807.png" alt="${\bf F}_{r,t}$"> are the scattered fields propagating in the directions of these waves.  <img src="bem_ug_planewave_eq02391837994690045152.png" alt="$k_r$"> is the wavenumber of the reflected (incoming) wave.</p><p>For layer simulations, one can obtain the reflected and transmitted contributions also separately through</p><pre class="codeinput"><span class="comment">%  reflected and transmitted extinction contribution</span>
+ext1 = exc.ext( sig, <span class="string">'refl'</span>  );
+ext2 = exc.ext( sig, <span class="string">'trans'</span> );
+</pre><p>At the moment we compute the absorption cross section as the differnce between extinction and scattering cross section.  Note that for layer structures this approach is only valid for non-absorbing layer materials.</p><h2 id="9">Examples</h2><p>We first show how to compute a scattering cross section for a nanosphere</p><pre class="codeinput"><span class="comment">%  options for BEM simulation</span>
+op = bemoptions( <span class="string">'sim'</span>, <span class="string">'ret'</span> );
+<span class="comment">%  initialize nanosphere</span>
+p = comparticle( { epsconst( 1 ), epstable( <span class="string">'gold.dat'</span> ) }, { trisphere( 144, 10 ) }, [ 2, 1 ], 1, op );
+
+<span class="comment">%  set up BEM solver</span>
+bem = bemsolver( p, op );
+<span class="comment">%  plane wave excitation</span>
+exc = planewave( [ 1, 0, 0; 0, 1, 0 ], [ 0, 0, 1; 0, 0, 1 ], op );
+<span class="comment">%  light wavelength in vacuum</span>
+enei = linspace( 400, 700, 80 );
+<span class="comment">%  allocate scattering cross section</span>
+sca = zeros( length( enei ), 2 );
+
+<span class="comment">%  loop over wavelengths</span>
+<span class="keyword">for</span> ien = 1 : length( enei )
+  <span class="comment">%  surface charge</span>
+  sig = bem \ exc( p, enei( ien ) );
+  <span class="comment">%  scattering cross section</span>
+  sca( ien, : ) = exc.sca( sig );
+<span class="keyword">end</span>
+
+<span class="comment">%  final plot</span>
+plot( enei, sca, <span class="string">'o-'</span>  );  hold <span class="string">on</span>;
+
+xlabel( <span class="string">'Wavelength (nm)'</span> );
+ylabel( <span class="string">'Scattering cross section (nm^2)'</span> );
+</pre><p>To plot the differential cross section at a wavelength of 600 nm, we proceed as follows</p><pre class="codeinput"><span class="comment">%  surface charge</span>
+sig = bem \ exc( p, 600 );
+<span class="comment">%  scattering cross section</span>
+[ sca, dsca ] = exc.sca( sig );
+<span class="comment">%  compute differential cross section</span>
+plot( trispherescale( dsca.p, dsca.dsca( :, 1 ), 1 ), dsca.dsca( :, 1 ) );
+</pre><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Plane wave excitation
+%
+% Plane wave excitations of metallic nanoparticles allow to compute
+% scattering, extinction, and absorption cross sections.
+%
+%% Initialization
+
+%  initialize PLANEWAVE object
+exc = planewave( pol, dir, op );
+%  pass additional arguments 
+exc = planewave( pol, dir, op, PropertyName, PropertyValue );
+
+%%
+% In the initialization, the following parameters and additional properties
+% are used
+%
+% * *|pol|* is the light polarization, several polarizations can be
+% computed by providing an array |[pol1;pol2;...]|.
+% * *|dir|* is the light propagation direction, several directions can be
+% computed by providing an array |[dir1;dir2;...]| of same size as |pol|.
+% For quasistatic simulations the |dir| argument can be also omitted.
+% * *|op|* is the option structure for the MNPBEM simulations.
+% * *|'medium'|* selects a medium through which the particle is excited. By
+% default the embedding medium corresponding to the first argument of the
+% |eps| cell of |comparticle| objects is taken. 
+% * *|'pinfty'|* provides a user-defined unit-sphere discretization for the
+% computation of the electromagnetic fields at infinity.
+%
+% |planewave| is a wrapper function that selects from the options and
+% property settings one of several classes. 
+%
+%% Methods
+%
+% Once the |planewave| excitation is initialized, one can compute the
+% excitation potentials at the boundary of a |comparticle| object at a
+% given wavelength |enei| according to
+
+%  compute excitation potentials at the boundary of particle P
+pot = exc( p, enei );
+%  one can also directly use them in the call to a BEM solver
+sig = bem \ exc( p, enei );
+
+%%
+% In addition to excitations, |planewave| also allows to compute the
+% various cross sections according to
+
+%  compute scattering, extinction, and absorption cross section
+sca = exc.sca( sig );
+ext = exc.ext( sig );
+abe = exc.abs( sig );
+
+%%
+% For retarded simulations, the calling sequence |[sca,dsca]=exc.sca(sig)|
+% returns both the total cross sections (for the different polarizations
+% and propagation directions) and the corresponding differential cross
+% sections.  The values are given on the unit sphere defined through
+% |pinfty|.  The differential cross sections (here for the first
+% polarization) can be plotted with
+
+%  compute total and differential cross section
+[ sca, dsca ] = exc.sca( sig );
+%  plot differential scattering cross section
+plot( dsca.p, dsca.dsca );
+%  plot differential cross section for deformed sphere
+plot( trispherescale( pinfty, dsca( :, 1 ), 1 ), dsca( :, 1 ) );
+
+%%
+% <<../figures/trispherescale.jpg>>
+%
+%%  Implementation
+%
+% In the quasistatic simulations, the cross sections are computed from the
+% induced dipole moments of the nanoparticle
+%
+% $$ P_{\rm sca}=\frac{8\pi}3 k^4\,|{\bf d}_\lambda|^2\,,\quad
+%    P_{\rm abs}=4\pi k\,\Im m
+%      \bigl(\hat{\bf e}_\lambda\cdot{\bf d}_\lambda\bigr)\,, $$
+%
+% where $\lambda$ denotes the different polarizations $\hat{\bf e}$.  In
+% the retarded simulations the pertinent equations are
+%
+% $$ P_{\rm sca}=n_b\oint \Re e\,{\bf n}\cdot\bigl\{ 
+%      {\bf E}\times{\bf B}^*\bigr\}\,da \,,\quad 
+%    P_{\rm ext}=-\frac 1{n_b}\oint \Re e\,{\bf n}\cdot\bigl\{
+%      {\bf E}\times{\bf B}_{\rm inc}^*+{\bf E}_{\rm inc}^*\times{\bf B}
+%    \bigr\}\,da\,, $$
+%
+% where $n_b$ is the refractive index of the embedding medium, ${\bf E}$,
+% ${\bf B}$ are the scattered electromagnetic fields, and ${\bf E}_{\rm
+% inc}$, ${\bf B}_{\rm inc}$ are the incoming electromagnetic fields of the
+% plane-wave excitation.  The integration extends over the (detector)
+% surface defined through |pinfty|.  For the calculation of the extinction
+% cross sections, we employ the optical theorem.
+%
+% For substrates or layer structures, we have used the following literature
+% to compute the extinction cross section:
+%
+% * Lytle et al, Phys. Rev. E *71*, 056610 (2005).
+% * Dahan and Greffet, Optics Express *20*, A530 (2012).
+% 
+% In the toolbox the extinction cross section is computed according to
+%
+% $$ P_{\rm ext}=\frac{4\pi}{k_r}\Im m\left(
+%     {\bf E}_r^*\cdot{\bf F}_r+{\bf E}_t^*\cdot{\bf F}_t\right). $$
+%
+% Here ${\bf E}_{r,t}$ are the electric fields of the reflected and
+% transmitted plane wave excitation, and ${\bf F}_{r,t}$ are the scattered
+% fields propagating in the directions of these waves.  $k_r$ is the
+% wavenumber of the reflected (incoming) wave.
+%
+% For layer simulations, one can obtain the reflected and transmitted
+% contributions also separately through
+
+%  reflected and transmitted extinction contribution
+ext1 = exc.ext( sig, 'refl'  );
+ext2 = exc.ext( sig, 'trans' );
+
+%%
+% At the moment we compute the absorption cross section as the differnce
+% between extinction and scattering cross section.  Note that for layer
+% structures this approach is only valid for non-absorbing layer materials.
+%
+%% Examples
+%
+% We first show how to compute a scattering cross section for a nanosphere
+
+%  options for BEM simulation
+op = bemoptions( 'sim', 'ret' );
+%  initialize nanosphere
+p = comparticle( { epsconst( 1 ), epstable( 'gold.dat' ) }, { trisphere( 144, 10 ) }, [ 2, 1 ], 1, op );
+
+%  set up BEM solver
+bem = bemsolver( p, op );
+%  plane wave excitation
+exc = planewave( [ 1, 0, 0; 0, 1, 0 ], [ 0, 0, 1; 0, 0, 1 ], op );
+%  light wavelength in vacuum
+enei = linspace( 400, 700, 80 );
+%  allocate scattering cross section
+sca = zeros( length( enei ), 2 );
+
+%  loop over wavelengths
+for ien = 1 : length( enei )
+  %  surface charge
+  sig = bem \ exc( p, enei( ien ) );
+  %  scattering cross section
+  sca( ien, : ) = exc.sca( sig );
+end
+
+%  final plot
+plot( enei, sca, 'o-'  );  hold on;
+
+xlabel( 'Wavelength (nm)' );
+ylabel( 'Scattering cross section (nm^2)' );
+
+%%
+% To plot the differential cross section at a wavelength of 600 nm, we
+% proceed as follows
+
+%  surface charge
+sig = bem \ exc( p, 600 );
+%  scattering cross section
+[ sca, dsca ] = exc.sca( sig );
+%  compute differential cross section
+plot( trispherescale( dsca.p, dsca.dsca( :, 1 ), 1 ), dsca.dsca( :, 1 ) );
+
+%%
+%
+% Copyright 2017 Ulrich Hohenester
+##### SOURCE END #####
+--></body></html>

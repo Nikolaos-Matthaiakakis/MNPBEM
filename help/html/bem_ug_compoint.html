@@ -1,0 +1,240 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>The compoint class</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_ug_compoint.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>The compoint class</h1><!--introduction--><p>For the computation of electric field maps or dipole excitations one has to embed points inside the dielectric environment.  This can be done with the <a href="matlab:doc('compoint')">compoint</a> class.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initialization</a></li><li><a href="#4">Methods</a></li><li><a href="#7">Tips and tricks</a></li><li><a href="#8">Examples</a></li></ul></div><h2 id="1">Initialization</h2><pre class="codeinput"><span class="comment">%  initialize compoint object with pos = [ x( : ), y( : ), z( : ) ]</span>
+pt = compoint( p, pos, op );
+<span class="comment">%  provide additional arguments</span>
+pt = compoint( p, pos, op, PropertyName, PropertyValue );
+</pre><div><ul><li><b><tt>p</tt></b> is a <a href="bem_ug_comparticle.html">comparticle</a> object that defines the dielectric environment.</li><li><b><tt>pos</tt></b> is an <tt>nx3</tt> array that defines the point positions.</li><li><b><tt>op</tt></b> is the <a href="bem_ug_options.html">options</a> structure of the MNPBEM toolbox.</li></ul></div><p>Property values and names for <tt>compoint</tt> objects, which can be either defined in <tt>op</tt> or can be additionally provided in the constructor call, are</p><div><ul><li><b><tt>'mindist'</tt></b> sets the minimum distance between the point positions <tt>pos</tt> and the boundary of particle <tt>p</tt>.  Positions that are closer than <tt>mindist</tt> are discarded from the point positions <tt>pt.pos</tt>.</li><li><b><tt>'medium'</tt></b> sets the dielectric media within which points are considered.  Positions in different media are discarded from the point positions <tt>pt.pos</tt>.</li></ul></div><p>Upon initialization, the point object has the following properties</p><pre class="codeinput"><span class="comment">%  cell array of dielectric materials (taken from COMPARTICLE object P)</span>
+pt.eps;
+<span class="comment">%  cell array of points grouped together for different media</span>
+pt.p;
+<span class="comment">%  medium index for pt.p</span>
+pt.inout;
+</pre><h2 id="4">Methods</h2><pre class="codeinput"><span class="comment">%  select positions of compoint object, also works for 'polfun', 'sphfun'</span>
+pt = select( pt, <span class="string">'carfun'</span>, @( x, y, z ) fun( x, y, z ) );
+<span class="comment">%  select points through index</span>
+pt = select( pt, <span class="string">'index'</span>, ind );
+</pre><p>Expanding an array or <tt>compstruct</tt> object to the size of <tt>pos</tt>, provided in the initialization, is done through</p><pre class="codeinput"><span class="comment">%  expand array or COMPSTRUCT object to size of POS</span>
+val = pt( val );
+<span class="comment">%  set discarded points to zero</span>
+val = pt( val, 0 );
+</pre><p>In this call, the values for points discarded in <tt>pt</tt> (because they are too close to the boundary or embedded in a different medium) are set to <tt>NaN</tt>.  Alternatively, one can provide another value for discarded points.</p><h2 id="7">Tips and tricks</h2><p>When using a <tt>compoint</tt> object in combindation with <a href="bem_ug_layerstructure.html">layer structures</a>, for instance for dipole simulations or the computation of electromagnetic fields, one should</p><div><ul><li>first add the layer structure to the options structure <tt>op</tt>, and then</li><li>pass the options structure to the <tt>compoint</tt> initialization.</li></ul></div><p>This procedure guarantees that all points outside the particles are properly placed within the layer structure.  Points directly lying on one of the interfaces are shifted into the upper layer media.</p><h2 id="8">Examples</h2><p>We first compare three different calling sequences for the <tt>compoint</tt> initialization, which demonstrate the working principle of the parameters <tt>medium</tt> and <tt>mindist</tt>.</p><pre class="codeinput"><span class="comment">%  set up a COMPARTICLE object and a set of points</span>
+p = comparticle( epstab, { trisphere( 256, 10 ) }, [ 2, 1 ], 1, op );
+[ x, y ] = meshgrid( 10 * linspace( - 1, 1, 31 ) ); z = 0 * x;
+<span class="comment">%  place the points into the dielectric media</span>
+pt = compoint( p, [ x( : ), y( : ), z( : ) ] );
+pt = compoint( p, [ x( : ), y( : ), z( : ) ], <span class="string">'medium'</span>,  1 );
+pt = compoint( p, [ x( : ), y( : ), z( : ) ], <span class="string">'mindist'</span>, 2 );
+</pre><p><img vspace="5" hspace="5" src="../figures/plotcompoint.jpg" alt=""> </p><p>In the next example we show how to embed points in the dielectric environment of a gold nanosphere, using the <tt>compoint</tt> object, and to compute and plot the electric field at the point positions for the nanosphere excited by a plane wave (you can copy the following lines and execute them under Matlab).</p><pre class="codeinput"><span class="comment">%  BEM options</span>
+op = bemoptions( <span class="string">'sim'</span>, <span class="string">'stat'</span>, <span class="string">'waitbar'</span>, 0 );
+<span class="comment">%  metallic nanosphere</span>
+p = comparticle( { epsconst( 1 ), epstable( <span class="string">'gold.dat'</span> ) }, { trisphere( 144, 10 ) }, [ 2, 1 ], 1, op );
+<span class="comment">%  plane wave excitation</span>
+exc = planewave( [ 1, 0, 0 ], [ 0, 0, 1 ], op );
+<span class="comment">%  surface charge for plane wave excitation with wavelength of 500 nm</span>
+sig = bemsolver( p, op ) \ exc( p, 500 );
+
+<span class="comment">%  grid</span>
+[ x, y ] = meshgrid( linspace( - 10, 10, 41 ) );
+<span class="comment">%  set up compoint object</span>
+pt = compoint( p, [ x( : ), y( : ), 0 * x( : ) ], op, <span class="string">'mindist'</span>, 0.5 );
+<span class="comment">%  set up Green function object between PT and P</span>
+g = greenfunction( pt, p, op );
+<span class="comment">%  compute electric field</span>
+f = field( g, sig );
+
+<span class="comment">%  plot electric field using cones</span>
+coneplot( pt.pos, f.e, <span class="string">'scale'</span>, 0.5 );
+</pre><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% The compoint class
+%
+% For the computation of electric field maps or dipole excitations one has
+% to embed points inside the dielectric environment.  This can be done with
+% the <matlab:doc('compoint') compoint> class.
+%
+%% Initialization
+
+%  initialize compoint object with pos = [ x( : ), y( : ), z( : ) ]
+pt = compoint( p, pos, op );
+%  provide additional arguments
+pt = compoint( p, pos, op, PropertyName, PropertyValue );
+
+%%
+% * *|p|* is a <bem_ug_comparticle.html comparticle> object that defines the
+% dielectric environment.
+% * *|pos|* is an |nx3| array that defines the point positions.
+% * *|op|* is the <bem_ug_options.html options> structure of the MNPBEM
+% toolbox.
+%
+% Property values and names for |compoint| objects, which can be either
+% defined in |op| or can be additionally provided in the constructor call,
+% are
+%
+% * *|'mindist'|* sets the minimum distance between the point positions
+% |pos| and the boundary of particle |p|.  Positions that are closer than
+% |mindist| are discarded from the point positions |pt.pos|.
+% * *|'medium'|* sets the dielectric media within which points are
+% considered.  Positions in different media are discarded from the point
+% positions |pt.pos|.
+%
+% Upon initialization, the point object has the following properties
+
+%%
+
+%  cell array of dielectric materials (taken from COMPARTICLE object P)
+pt.eps;
+%  cell array of points grouped together for different media
+pt.p;
+%  medium index for pt.p
+pt.inout;
+
+%% Methods
+
+%  select positions of compoint object, also works for 'polfun', 'sphfun'
+pt = select( pt, 'carfun', @( x, y, z ) fun( x, y, z ) );
+%  select points through index
+pt = select( pt, 'index', ind );
+
+%%
+% Expanding an array or |compstruct| object to the size of |pos|, provided
+% in the initialization, is done through
+
+%  expand array or COMPSTRUCT object to size of POS
+val = pt( val );
+%  set discarded points to zero
+val = pt( val, 0 );
+
+%%
+% In this call, the values for points discarded in |pt| (because they are
+% too close to the boundary or embedded in a different medium) are set to
+% |NaN|.  Alternatively, one can provide another value for discarded
+% points.
+%
+%% Tips and tricks
+%
+% When using a |compoint| object in combindation with
+% <bem_ug_layerstructure.html layer structures>, for instance for dipole
+% simulations or the computation of electromagnetic fields, one should
+%
+% * first add the layer structure to the options structure |op|, and then
+% * pass the options structure to the |compoint| initialization.
+%
+% This procedure guarantees that all points outside the particles are
+% properly placed within the layer structure.  Points directly lying on one
+% of the interfaces are shifted into the upper layer media.
+%
+%% Examples
+%
+% We first compare three different calling sequences for the |compoint|
+% initialization, which demonstrate the working principle of the parameters
+% |medium| and |mindist|.
+
+%  set up a COMPARTICLE object and a set of points
+p = comparticle( epstab, { trisphere( 256, 10 ) }, [ 2, 1 ], 1, op );
+[ x, y ] = meshgrid( 10 * linspace( - 1, 1, 31 ) ); z = 0 * x;
+%  place the points into the dielectric media
+pt = compoint( p, [ x( : ), y( : ), z( : ) ] );
+pt = compoint( p, [ x( : ), y( : ), z( : ) ], 'medium',  1 );
+pt = compoint( p, [ x( : ), y( : ), z( : ) ], 'mindist', 2 );
+%%
+% <<../figures/plotcompoint.jpg>>
+%
+% In the next example we show how to embed points in the dielectric
+% environment of a gold nanosphere, using the |compoint| object, and to
+% compute and plot the electric field at the point positions for the
+% nanosphere excited by a plane wave (you can copy the following lines and
+% execute them under Matlab).
+
+%  BEM options
+op = bemoptions( 'sim', 'stat', 'waitbar', 0 );
+%  metallic nanosphere
+p = comparticle( { epsconst( 1 ), epstable( 'gold.dat' ) }, { trisphere( 144, 10 ) }, [ 2, 1 ], 1, op );
+%  plane wave excitation
+exc = planewave( [ 1, 0, 0 ], [ 0, 0, 1 ], op );
+%  surface charge for plane wave excitation with wavelength of 500 nm
+sig = bemsolver( p, op ) \ exc( p, 500 );
+
+%  grid 
+[ x, y ] = meshgrid( linspace( - 10, 10, 41 ) );
+%  set up compoint object
+pt = compoint( p, [ x( : ), y( : ), 0 * x( : ) ], op, 'mindist', 0.5 );
+%  set up Green function object between PT and P
+g = greenfunction( pt, p, op );
+%  compute electric field
+f = field( g, sig );
+
+%  plot electric field using cones
+coneplot( pt.pos, f.e, 'scale', 0.5 );
+
+%%
+%
+% Copyright 2017 Ulrich Hohenester
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,171 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>The compstruct class</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_ug_compstruct.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>The compstruct class</h1><!--introduction--><p>The input and output of the BEM solvers goes via the <tt>compstruct</tt> objects.  They are used for the storage of surface charges, potentials, and fields.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initialization</a></li><li><a href="#3">Methods</a></li><li><a href="#4">Example</a></li></ul></div><h2 id="1">Initialization</h2><pre class="codeinput"><span class="comment">%  initialize COMPSTRUCT object</span>
+c = compstruct( p, enei );
+<span class="comment">%  initialization with additional fields</span>
+c = compstruct( p, enei, <span class="string">'field1'</span>, field1, <span class="string">'field2'</span>, field2 );
+</pre><p>Compstruct objects behave very much like structures but <i>must</i> additionally store</p><div><ul><li><b><tt>p</tt></b> a <tt>comparticle</tt> or <tt>compoint</tt> object, and</li><li><b><tt>enei</tt></b> the light wavelength.</li></ul></div><p>Fields can be added to <tt>compstruct</tt> objects either in the initialization call or by setting them through</p><pre class="codeinput"><span class="comment">%  add additional fields to COMPSTRUCT object C</span>
+c.field1 = field1;
+c.field2 = field2;
+</pre><h2 id="3">Methods</h2><p>The main difference of <tt>compstruct</tt> objects in comparison to normal <tt>struct</tt> objects is that one can also treat them as normal arrays.  This means, we can add or subtract <tt>compstruct</tt> objects (<tt>c+d</tt>, <tt>c-d</tt>) and we can multiply them with a constant value (<tt>h*c</tt>).  In adding or subtracting them, fields that are missing in one of the objects are treated as zeros.  Upon multiplication all fields of the <tt>compstruct</tt> object are multiplied with the same value.  These features are particularly useful for <tt>compstruct</tt> object with electromagnetic fields that can be easily added or scaled.</p><h2 id="4">Example</h2><p>As an example, we investigate the class <tt>planewave</tt> which computes for a plane wave illumination the potentials and their surface derivatives at the particle boundaries.  For a quasistatic simulation we get</p><pre class="codeinput"><span class="comment">%  BEM options for quasistatic simulation</span>
+op = bemoptions( <span class="string">'sim'</span>, <span class="string">'stat'</span> );
+<span class="comment">%  metallic nanosphere</span>
+p = comparticle( { epsconst( 1 ), epstable( <span class="string">'gold.dat'</span> ) }, { trisphere( 256, 10 ) }, [ 2, 1 ], 1, op );
+<span class="comment">%  plane wave excitation with polarization along x and light propagation along z</span>
+exc = planewave( [ 1, 0, 0 ], [ 0, 0, 1 ], op );
+<span class="comment">%  evaluate plane wave excitation for wavelength of 500 nm</span>
+exc( p, 500 )
+</pre><pre>  compstruct :
+      phip: [508x1 double]
+         p: [1x1 comparticle]
+      enei: 500</pre><p>In the quasistatic approximation the excitation is described by the surface derivative <tt>phip</tt> (which is the same for the inside and outside particle boundary).  For the retarded simulation we get</p><pre class="codeinput"><span class="comment">%  BEM options for solution of full Maxwell equations</span>
+op = bemoptions( <span class="string">'sim'</span>, <span class="string">'ret'</span> );
+</pre><pre>  compstruct :
+        a2: [508x3 double]
+       a2p: [508x3 double]
+         p: [1x1 comparticle]
+      enei: 500</pre><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% The compstruct class
+%
+% The input and output of the BEM solvers goes via the |compstruct|
+% objects.  They are used for the storage of surface charges, potentials,
+% and fields.
+%
+%%  Initialization
+
+%  initialize COMPSTRUCT object
+c = compstruct( p, enei );
+%  initialization with additional fields
+c = compstruct( p, enei, 'field1', field1, 'field2', field2 );
+
+%%
+% Compstruct objects behave very much like structures but _must_
+% additionally store
+%
+% * *|p|* a |comparticle| or |compoint| object, and
+% * *|enei|* the light wavelength.
+%
+% Fields can be added to |compstruct| objects either in the initialization
+% call or by setting them through
+
+%  add additional fields to COMPSTRUCT object C
+c.field1 = field1;
+c.field2 = field2;
+
+%% Methods
+% The main difference of |compstruct| objects in comparison to normal
+% |struct| objects is that one can also treat them as normal arrays.  This
+% means, we can add or subtract |compstruct| objects (|c+d|, |c-d|) and we
+% can multiply them with a constant value (|h*c|).  In adding or
+% subtracting them, fields that are missing in one of the objects are
+% treated as zeros.  Upon multiplication all fields of the |compstruct|
+% object are multiplied with the same value.  These features are
+% particularly useful for |compstruct| object with electromagnetic fields
+% that can be easily added or scaled.
+%
+%% Example
+%
+% As an example, we investigate the class |planewave| which
+% computes for a plane wave illumination the potentials and their surface
+% derivatives at the particle boundaries.  For a quasistatic simulation we
+% get
+
+%  BEM options for quasistatic simulation
+op = bemoptions( 'sim', 'stat' );
+%  metallic nanosphere
+p = comparticle( { epsconst( 1 ), epstable( 'gold.dat' ) }, { trisphere( 256, 10 ) }, [ 2, 1 ], 1, op );
+%  plane wave excitation with polarization along x and light propagation along z
+exc = planewave( [ 1, 0, 0 ], [ 0, 0, 1 ], op );
+%  evaluate plane wave excitation for wavelength of 500 nm
+exc( p, 500 )
+
+%%
+%    compstruct : 
+%        phip: [508x1 double]
+%           p: [1x1 comparticle]
+%        enei: 500
+%
+% In the quasistatic approximation the excitation is described by the
+% surface derivative |phip| (which is the same for the inside and outside
+% particle boundary).  For the retarded simulation we get 
+
+%  BEM options for solution of full Maxwell equations
+op = bemoptions( 'sim', 'ret' );
+
+%%
+%    compstruct : 
+%          a2: [508x3 double]
+%         a2p: [508x3 double]
+%           p: [1x1 comparticle]
+%        enei: 500
+%
+% Copyright 2017 Ulrich Hohenester
+##### SOURCE END #####
+--></body></html>

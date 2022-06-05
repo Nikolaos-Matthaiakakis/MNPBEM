@@ -1,0 +1,211 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Functions and classes of the MNPBEM Toolbox</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_helpfun.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Functions and classes of the MNPBEM Toolbox</h1><!--introduction--><p><img vspace="5" hspace="5" src="../figures/mnpbemlogo.jpg" alt=""> </p><p>The toolbox includes a number of classes and functions.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Base</a></li><li><a href="#2">BEM</a></li><li><a href="#3">Greenfun</a></li><li><a href="#4">Material</a></li><li><a href="#5">Mie</a></li><li><a href="#6">Misc</a></li><li><a href="#7">Particles</a></li><li><a href="#8">Simulation</a></li></ul></div><h2 id="1">Base</h2><div><ul><li><a href="matlab:doc('bembase')">@bembase</a> - Abstract base class for MNPBEM classes.</li><li><a href="matlab:doc('bemsolver')">bemsolver.m</a> - Select appropriate BEM solver using options.</li><li><a href="matlab:doc('dipole')">dipole.m</a> - Initialize dipole excitation.</li><li><a href="matlab:doc('electronbeeam')">electronbeam.m</a> - Initialize electron excitation for EELS simulation.</li><li><a href="matlab:doc('greenfunction')">greenfunction.m</a> - Initialize Green function.</li><li><a href="matlab:doc('planewave')">planewave.m</a> - Initialize plane wave excitation.</li><li><a href="matlab:doc('spectrum')">spectrum.m</a> - Initialize spectrum.</li></ul></div><h2 id="2">BEM</h2><div><ul><li><a href="matlab:doc('bemiter')">@bemiter</a> - Base class for iterative BEM solvers.</li><li><a href="matlab:doc('bemret')">@bemret</a> - BEM solver for full Maxwell equations.</li><li><a href="matlab:doc('bemretiter')">@bemretiter</a> -  Iterative BEM solver for full Maxwell equations.</li><li><a href="matlab:doc('bemretlayer')">@bemretlayer</a> - BEM solver for full Maxwell equations and layer structure.</li><li><a href="matlab:doc('bemretlayeriter')">@bemretlayeriter</a> - Iterative BEM solver for full Maxwell equations and layer structure.</li><li><a href="matlab:doc('bemretmirror')">@bemretmirror</a> -  BEM solver for full Maxwell equations with mirror symmetry.</li><li><a href="matlab:doc('bemstat')">@bemstat</a> - BEM solver for quasistatic approximation.</li><li><a href="matlab:doc('bemstatiter')">@bemstatiter</a> - Iterative BEM solver for quasistatic approximation.</li><li><a href="matlab:doc('bemstateig')">@bemstateig</a> - BEM solver for quasistatic approximation and eigenmode expansion.</li><li><a href="matlab:doc('bemstateigmirror')">@bemstateigmirror</a> BEM solver for quasistatic approximation using mirror symmetry.</li><li><a href="matlab:doc('bemstatlayer')">@bemstatlayer</a> - BEM solver for quasistatic approximation and layer structure.</li><li><a href="matlab:doc('bemstatmirror')">@bemstatmirror</a> - BEM solver for quasistatic approximation with mirror symmetry.</li><li><a href="matlab:doc('plasmonmode')">plasmonmode.m</a> - Compute plasmon eigenmodes for discretized surface.</li></ul></div><h2 id="3">Greenfun</h2><div><ul><li><a href="matlab:doc('compgreenret')">@compgreenret</a> - Green function for composite points and particle.</li><li><a href="matlab:doc('compgreenrelayer')">@compgreenrelayer</a> - Green function for layer structure.</li><li><a href="matlab:doc('compgreenretmirror')">@compgreenretmirror</a> - Green function for composite particles with mirror symmetry.</li><li><a href="matlab:doc('compgreenstat')">@compgreenstat</a> - Green function for cquasistatic approximation.</li><li><a href="matlab:doc('compgreenstatlayer')">@compgreenstatlayer</a> - Green function for layer structure in quasistatic limit.</li><li><a href="matlab:doc('compgreenstatmirror')">@compgreenstatmirror</a> - Quasistatic Green function for composite particles with mirror symmetry.</li><li><a href="matlab:doc('compgreentablayer')">@compgreentablayer</a> -  Green function for layer structure and different media.</li><li><a href="matlab:doc('greenret')">@greenret</a> - Green functions for solution of full Maxwell equations.</li><li><a href="matlab:doc('greenretlayer')">@greenretlayer</a> - Green function for reflected part of layer structure.</li><li><a href="matlab:doc('greenstat')">@greenstat</a> - Green functions for quasistatic approximation.</li><li><a href="matlab:doc('greentablayer')">@greentablayer</a> - Green function for layer structure.</li><li><a href="matlab:doc('aca.compgreenret')">@aca.compgreenret</a> - Green function for full Maxwell's equations and ACA..</li><li><a href="matlab:doc('aca.compgreenretlayer')">@aca.compgreenretlayer</a> - Green function for layer structure using full Maxwell's equations and ACA.</li><li><a href="matlab:doc('aca.compgreenstat')">@aca.compgreenstat</a> - Green function quasistatic approximation using ACA.</li><li><a href="matlab:doc('clustertree')">@clustertree</a> - Build cluster tree through bisection.</li><li><a href="matlab:doc('hmatrix')">@hmatrix</a> - Hierarchical matrix.</li></ul></div><h2 id="4">Material</h2><div><ul><li><a href="matlab:doc('epsconst')">@epsconst</a> - Dielectric constant.</li><li><a href="matlab:doc('epsdrude')">@epsdrude</a> - Drude dielectric function.</li><li><a href="matlab:doc('epstable')">@epstable</a> - Interpolate from tabulated values of dielectric function.</li><li><a href="matlab:doc('epsfun')">@epsfun</a> - Dielectric function using user-supplied function.</li></ul></div><h2 id="5">Mie</h2><div><ul><li><a href="matlab:doc('miegans')">@miegans</a> - Mie-Gans theory for ellipsoidal particle and quasistatic approximation.</li><li><a href="matlab:doc('mieret')">@mieret</a> - Mie theory for spherical particle using the full Maxwell equations.</li><li><a href="matlab:doc('miestat')">@miestat</a> - Mie theory for spherical particle using the quasistatic approximation.</li><li><a href="matlab:doc('miesolver')">miesolver.m</a> - Initialize solver for Mie theory.</li></ul></div><h2 id="6">Misc</h2><div><ul><li><a href="matlab:doc('bemplot')">@bemplot</a> - Plotting value arrays and vector functions within MNPBEM.</li><li><a href="matlab:doc('arrowplot')">arrowplot.m</a> - Plot vectors at given positions using arrows.</li><li><a href="matlab:doc('bemoptions')">bemoptions.m</a> - Set standard options for MNPBEM simulation.</li><li><a href="matlab:doc('coneplot')">coneplot.m</a> - Plot vectors at given positions using cones.</li><li><a href="matlab:doc('coneplot')">coneplot2.m</a> - Plot vectors at given positions using cones.</li><li><a href="matlab:doc('inner')">inner.m</a> - Inner product between a vector and a matrix or tensor.</li><li><a href="matlab:doc('outer')">outer.m</a> - Outer product between vector and tensor.</li><li><a href="matlab:doc('particlecursor')">particlecursor.m</a> - Find surface elements of discretized particle surface.</li><li><a href="matlab:doc('patchcurvature')">patchcurvature.m</a> - Principal curvature values of a triangulated mesh.</li><li><a href="matlab:doc('subarray')">subarray.m</a> - Pass arguments to subsref.</li><li><a href="matlab:edit('units')">units.m</a> - Conversion between eV and nm.</li><li><a href="matlab:doc('vecnorm')">vecnorm.m</a> - Norm of vector array.</li><li><a href="matlab:doc('vecnormalize')">vecnormalize.m</a> - Normalize vector array.</li></ul></div><h2 id="7">Particles</h2><div><ul><li><a href="matlab:doc('comparticle')">@comparticle</a> - Compound of particles in a dielectric environment.</li><li><a href="matlab:doc('comparticlemirror')">@comparticlemirror</a> - Compound of particles with mirror symmetry in a dielectric environment.</li><li><a href="matlab:doc('compoint')">@compoint</a> - Compound of points in a dielectric environment.</li><li><a href="matlab:doc('compound')">@compound</a> - Compound of points or particles within a dielectric environment.</li><li><a href="matlab:doc('compstruct')">@compstruct</a> - Structure for compound of points or particles.</li><li><a href="matlab:doc('compstructmirrore')">@compstructmirror</a> - Structure for compound of points or particles with mirror symmetry.</li><li><a href="matlab:doc('layerstructure')">@layerstructure</a> - Dielectric layer structures.</li><li><a href="matlab:doc('particle')">@particle</a> - Faces and vertices of discretized particle.</li><li><a href="matlab:doc('point')">@point</a> - Collection of points.</li><li><a href="matlab:doc('polygon')">@polygon</a> - 2D polygons for use with Mesh2d.</li></ul></div><p><b>Particle shapes</b></p><div><ul><li><a href="matlab:doc('edgeprofile')">@edgeprofile</a> - Profile of smoothed edge for use with TRIPOLYGON.</li><li><a href="matlab:doc('polygon3')">@polygon3</a> - 3D polygon for extrusion of particles.</li><li><a href="matlab:doc('tricube')">tricube.m</a> - Cube particle with rounded edges.</li><li><a href="matlab:doc('tripolygon')">tripolygon.m</a> - 3d particle from polygon.</li><li><a href="matlab:doc('trirod')">trirod.m</a> - Faces and vertices for rod-shaped particle.</li><li><a href="matlab:doc('trisphere')">trisphere.m</a> - Load points on sphere from file and perform triangulation.</li><li><a href="matlab:doc('trispherescale')">trispherescale.m</a> - Deform surface of sphere.</li><li><a href="matlab:doc('trispheresegment')">trispheresegment.m</a> - Discretized surface of sphere.</li><li><a href="matlab:doc('tritorus')">tritorus.m</a> - Faces and vertices of triangulated torus.</li></ul></div><h2 id="8">Simulation</h2><p><b>Misc</b></p><div><ul><li><a href="matlab:doc('eelsbase')">@eelsbase</a> - Base class for electron energy loss spectroscopy (EELS) simulations.</li><li><a href="matlab:doc('meshfield')">@meshfield</a> - Compute electromagnetic fields for a grid of positions.</li></ul></div><p><b>Quasistatic</b></p><div><ul><li><a href="matlab:doc('dipolestat')">@dipolestat</a> - Excitation of an oscillating dipole in quasistatic approximation.</li><li><a href="matlab:doc('dipolestatlayer')">@dipolestatlayer</a> - Excitation of an oscillating dipole in quasistatic approximation.</li><li><a href="matlab:doc('dipolestatmirror')">@dipolestatmirror</a> -  Excitation of an oscillating dipole  using mirror symmetry.</li><li><a href="matlab:doc('eelsstat')">@eelsstat</a> - Excitation of an electron beam with a high kinetic energy.</li><li><a href="matlab:doc('planewavestat')">@planewavestat</a> - Plane wave excitation within quasistatic approximation.</li><li><a href="matlab:doc('planewavestatlayer')">@planewavestatlayer</a> - Plane wave excitation within quasistatic approximation for layer structure.</li><li><a href="matlab:doc('planewavestatmirror')">@planewavestatmirror</a> - Plane wave excitation within quasistatic approximation for mirror symmetry.</li><li><a href="matlab:doc('spectrumstat')">@spectrumstat</a> - Compute far fields and scattering cross sections in quasistatic limit.</li><li><a href="matlab:doc('spectrumstatlayer')">@spectrumstatlayer</a> - Compute far fields and scattering cross sections for layer structure.</li></ul></div><p><b>Retarded</b></p><div><ul><li><a href="matlab:doc('dipoleret')">@dipoleret</a> - Excitation of an oscillating dipole.</li><li><a href="matlab:doc('dipoleretlayer')">@dipoleretlayer</a> - Excitation of an oscillating dipole.</li><li><a href="matlab:doc('dipoleretmirror')">@dipoleretmirror</a> - Excitation of an oscillating dipole.</li><li><a href="matlab:doc('eelsret')">@eelsret</a> - Excitation of an electron beam with a high kinetic energy.</li><li><a href="matlab:doc('planewaveret')">@planewaveret</a> - Plane wave excitation for solution of full Maxwell equations.</li><li><a href="matlab:doc('planewaveretlayer')">@planewaveretlayer</a> - Plane wave excitation for layer structure.</li><li><a href="matlab:doc('planewaveretmirror')">@planewaveretmirror</a> - Plane wave excitation using mirror symmetry.</li><li><a href="matlab:doc('spectrumret')">@spectrumret</a> - Compute far fields and scattering cross sections.</li><li><a href="matlab:doc('spectrumretlayer')">@spectrumretlayer</a> - Compute far fields and scattering cross sections for layer structure.</li></ul></div><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Functions and classes of the MNPBEM Toolbox
+%
+% <<../figures/mnpbemlogo.jpg>>
+%
+% The toolbox includes a number of classes and functions.
+%
+%% Base
+%
+% * <matlab:doc('bembase') @bembase> - Abstract base class for MNPBEM classes.
+% * <matlab:doc('bemsolver') bemsolver.m> - Select appropriate BEM solver using options.
+% * <matlab:doc('dipole') dipole.m> - Initialize dipole excitation.
+% * <matlab:doc('electronbeeam') electronbeam.m> - Initialize electron excitation for EELS simulation.
+% * <matlab:doc('greenfunction') greenfunction.m> - Initialize Green function.
+% * <matlab:doc('planewave') planewave.m> - Initialize plane wave excitation.
+% * <matlab:doc('spectrum') spectrum.m> - Initialize spectrum.
+%
+%% BEM
+%
+% * <matlab:doc('bemiter') @bemiter> - Base class for iterative BEM solvers.
+% * <matlab:doc('bemret') @bemret> - BEM solver for full Maxwell equations.
+% * <matlab:doc('bemretiter') @bemretiter> -  Iterative BEM solver for full Maxwell equations.
+% * <matlab:doc('bemretlayer') @bemretlayer> - BEM solver for full Maxwell equations and layer structure.
+% * <matlab:doc('bemretlayeriter') @bemretlayeriter> - Iterative BEM solver for full Maxwell equations and layer structure.
+% * <matlab:doc('bemretmirror') @bemretmirror> -  BEM solver for full Maxwell equations with mirror symmetry.
+% * <matlab:doc('bemstat') @bemstat> - BEM solver for quasistatic approximation.
+% * <matlab:doc('bemstatiter') @bemstatiter> - Iterative BEM solver for quasistatic approximation.
+% * <matlab:doc('bemstateig') @bemstateig> - BEM solver for quasistatic approximation and eigenmode expansion.
+% * <matlab:doc('bemstateigmirror') @bemstateigmirror> BEM solver for quasistatic approximation using mirror symmetry.
+% * <matlab:doc('bemstatlayer') @bemstatlayer> - BEM solver for quasistatic approximation and layer structure.
+% * <matlab:doc('bemstatmirror') @bemstatmirror> - BEM solver for quasistatic approximation with mirror symmetry.
+% * <matlab:doc('plasmonmode') plasmonmode.m> - Compute plasmon eigenmodes for discretized surface.
+%
+%% Greenfun
+%
+% * <matlab:doc('compgreenret') @compgreenret> - Green function for composite points and particle.
+% * <matlab:doc('compgreenrelayer') @compgreenrelayer> - Green function for layer structure.
+% * <matlab:doc('compgreenretmirror') @compgreenretmirror> - Green function for composite particles with mirror symmetry.
+% * <matlab:doc('compgreenstat') @compgreenstat> - Green function for cquasistatic approximation.
+% * <matlab:doc('compgreenstatlayer') @compgreenstatlayer> - Green function for layer structure in quasistatic limit.
+% * <matlab:doc('compgreenstatmirror') @compgreenstatmirror> - Quasistatic Green function for composite particles with mirror symmetry.
+% * <matlab:doc('compgreentablayer') @compgreentablayer> -  Green function for layer structure and different media.
+% * <matlab:doc('greenret') @greenret> - Green functions for solution of full Maxwell equations. 
+% * <matlab:doc('greenretlayer') @greenretlayer> - Green function for reflected part of layer structure.
+% * <matlab:doc('greenstat') @greenstat> - Green functions for quasistatic approximation. 
+% * <matlab:doc('greentablayer') @greentablayer> - Green function for layer structure.
+% * <matlab:doc('aca.compgreenret') @aca.compgreenret> - Green function for full Maxwell's equations and ACA..
+% * <matlab:doc('aca.compgreenretlayer') @aca.compgreenretlayer> - Green function for layer structure using full Maxwell's equations and ACA.
+% * <matlab:doc('aca.compgreenstat') @aca.compgreenstat> - Green function quasistatic approximation using ACA.
+% * <matlab:doc('clustertree') @clustertree> - Build cluster tree through bisection.
+% * <matlab:doc('hmatrix') @hmatrix> - Hierarchical matrix.
+%
+%% Material
+%
+% * <matlab:doc('epsconst') @epsconst> - Dielectric constant.
+% * <matlab:doc('epsdrude') @epsdrude> - Drude dielectric function.
+% * <matlab:doc('epstable') @epstable> - Interpolate from tabulated values of dielectric function.
+% * <matlab:doc('epsfun') @epsfun> - Dielectric function using user-supplied function.
+%
+%% Mie
+%
+% * <matlab:doc('miegans') @miegans> - Mie-Gans theory for ellipsoidal particle and quasistatic approximation.
+% * <matlab:doc('mieret') @mieret> - Mie theory for spherical particle using the full Maxwell equations.
+% * <matlab:doc('miestat') @miestat> - Mie theory for spherical particle using the quasistatic approximation.
+% * <matlab:doc('miesolver') miesolver.m> - Initialize solver for Mie theory.
+%
+%% Misc
+%
+% * <matlab:doc('bemplot') @bemplot> - Plotting value arrays and vector functions within MNPBEM.
+% * <matlab:doc('arrowplot') arrowplot.m> - Plot vectors at given positions using arrows.
+% * <matlab:doc('bemoptions') bemoptions.m> - Set standard options for MNPBEM simulation.
+% * <matlab:doc('coneplot') coneplot.m> - Plot vectors at given positions using cones.
+% * <matlab:doc('coneplot') coneplot2.m> - Plot vectors at given positions using cones.
+% * <matlab:doc('inner') inner.m> - Inner product between a vector and a matrix or tensor.
+% * <matlab:doc('outer') outer.m> - Outer product between vector and tensor.
+% * <matlab:doc('particlecursor') particlecursor.m> - Find surface elements of discretized particle surface.
+% * <matlab:doc('patchcurvature') patchcurvature.m> - Principal curvature values of a triangulated mesh. 
+% * <matlab:doc('subarray') subarray.m> - Pass arguments to subsref.
+% * <matlab:edit('units') units.m> - Conversion between eV and nm.
+% * <matlab:doc('vecnorm') vecnorm.m> - Norm of vector array.
+% * <matlab:doc('vecnormalize') vecnormalize.m> - Normalize vector array.
+%
+%% Particles
+%
+% * <matlab:doc('comparticle') @comparticle> - Compound of particles in a dielectric environment.
+% * <matlab:doc('comparticlemirror') @comparticlemirror> - Compound of particles with mirror symmetry in a dielectric environment.
+% * <matlab:doc('compoint') @compoint> - Compound of points in a dielectric environment.
+% * <matlab:doc('compound') @compound> - Compound of points or particles within a dielectric environment.
+% * <matlab:doc('compstruct') @compstruct> - Structure for compound of points or particles.
+% * <matlab:doc('compstructmirrore') @compstructmirror> - Structure for compound of points or particles with mirror symmetry.
+% * <matlab:doc('layerstructure') @layerstructure> - Dielectric layer structures.
+% * <matlab:doc('particle') @particle> - Faces and vertices of discretized particle.
+% * <matlab:doc('point') @point> - Collection of points.
+% * <matlab:doc('polygon') @polygon> - 2D polygons for use with Mesh2d.
+%
+% *Particle shapes*
+%
+% * <matlab:doc('edgeprofile') @edgeprofile> - Profile of smoothed edge for use with TRIPOLYGON.
+% * <matlab:doc('polygon3') @polygon3> - 3D polygon for extrusion of particles.
+% * <matlab:doc('tricube') tricube.m> - Cube particle with rounded edges.
+% * <matlab:doc('tripolygon') tripolygon.m> - 3d particle from polygon.
+% * <matlab:doc('trirod') trirod.m> - Faces and vertices for rod-shaped particle.
+% * <matlab:doc('trisphere') trisphere.m> - Load points on sphere from file and perform triangulation.
+% * <matlab:doc('trispherescale') trispherescale.m> - Deform surface of sphere.
+% * <matlab:doc('trispheresegment') trispheresegment.m> - Discretized surface of sphere.
+% * <matlab:doc('tritorus') tritorus.m> - Faces and vertices of triangulated torus.
+%
+%% Simulation
+%
+% *Misc*
+%
+% * <matlab:doc('eelsbase') @eelsbase> - Base class for electron energy loss spectroscopy (EELS) simulations.
+% * <matlab:doc('meshfield') @meshfield> - Compute electromagnetic fields for a grid of positions.
+%
+% *Quasistatic*
+%
+% * <matlab:doc('dipolestat') @dipolestat> - Excitation of an oscillating dipole in quasistatic approximation.
+% * <matlab:doc('dipolestatlayer') @dipolestatlayer> - Excitation of an oscillating dipole in quasistatic approximation.
+% * <matlab:doc('dipolestatmirror') @dipolestatmirror> -  Excitation of an oscillating dipole  using mirror symmetry.
+% * <matlab:doc('eelsstat') @eelsstat> - Excitation of an electron beam with a high kinetic energy.
+% * <matlab:doc('planewavestat') @planewavestat> - Plane wave excitation within quasistatic approximation.
+% * <matlab:doc('planewavestatlayer') @planewavestatlayer> - Plane wave excitation within quasistatic approximation for layer structure.
+% * <matlab:doc('planewavestatmirror') @planewavestatmirror> - Plane wave excitation within quasistatic approximation for mirror symmetry.
+% * <matlab:doc('spectrumstat') @spectrumstat> - Compute far fields and scattering cross sections in quasistatic limit.
+% * <matlab:doc('spectrumstatlayer') @spectrumstatlayer> - Compute far fields and scattering cross sections for layer structure.
+%
+% *Retarded*
+%
+% * <matlab:doc('dipoleret') @dipoleret> - Excitation of an oscillating dipole.
+% * <matlab:doc('dipoleretlayer') @dipoleretlayer> - Excitation of an oscillating dipole.
+% * <matlab:doc('dipoleretmirror') @dipoleretmirror> - Excitation of an oscillating dipole.
+% * <matlab:doc('eelsret') @eelsret> - Excitation of an electron beam with a high kinetic energy.
+% * <matlab:doc('planewaveret') @planewaveret> - Plane wave excitation for solution of full Maxwell equations.
+% * <matlab:doc('planewaveretlayer') @planewaveretlayer> - Plane wave excitation for layer structure.
+% * <matlab:doc('planewaveretmirror') @planewaveretmirror> - Plane wave excitation using mirror symmetry.
+% * <matlab:doc('spectrumret') @spectrumret> - Compute far fields and scattering cross sections.
+% * <matlab:doc('spectrumretlayer') @spectrumretlayer> - Compute far fields and scattering cross sections for layer structure.
+%
+%
+% Copyright 2017 Ulrich Hohenester
+##### SOURCE END #####
+--></body></html>

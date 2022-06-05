@@ -1,0 +1,217 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>The polygon class</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2018-02-18"><meta name="DC.source" content="bem_ug_polygon.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>The polygon class</h1><!--introduction--><p>Metallic nanoparticles are often fabricated by means of electron beam lithography.  These particles can have a complicated shape in a 2D plane while the shape in the third direction comes from some kind of extrusion. To deal with such particles we have introduced the <tt>polygon</tt> class that allows for a flexible design of polygons in 2D together with a number of functions to extrude the polygon into the z-direction.  The <tt>polygon</tt> class uses the Mesh2D toolbox avaialble at <a href="http://www.mathworks.com">www.mathworks.com</a>.  To access the functions of the Mesh2D toolobox one must add the Mesh2D directory name to the Matlab paths.</p><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">Initialization</a></li><li><a href="#3">Methods</a></li><li><a href="#6">Triangulation of polygon areas</a></li></ul></div><h2 id="1">Initialization</h2><pre class="codeinput"><span class="comment">%  initialization with position list POSLST = [ x1, y1; x2, y2; ... ]</span>
+poly = polygon( poslst );
+poly = polygon( poslst, PropertyName, PropertyValue );
+<span class="comment">%  polygon with N edges</span>
+poly = polygon( n );
+poly = polygon( n, PropertyName, PropertyValue );
+</pre><p><img vspace="5" hspace="5" src="../figures/polygon.jpg" alt=""> </p><p>In the <tt>polygon</tt> initialization one can additionally provide the following property names and values</p><div><ul><li><b><tt>'size'</tt></b> scale size of polygon,</li><li><b><tt>'dir'</tt></b> direction of polygon to determine the direction of the outer surface normals (see below),</li><li><b><tt>'sym'</tt></b> symmetry keyword (see section on <a href="./mnpbem_ug_symmetry.html">symmetry</a>).</li></ul></div><h2 id="3">Methods</h2><p>There exist several <a href="matlab:doc('polygon')">methods</a> that are useful in modifying polygons</p><pre class="codeinput"><span class="comment">%  shift polygon by vector [ x, y ]</span>
+poly = shift( poly, [ x, y ] );
+<span class="comment">%  scale polygon by scalar or two values</span>
+poly = scale( poly, val );
+<span class="comment">%  rotate polygon by angle (degrees)</span>
+poly = rot(  poly, angle );
+<span class="comment">%  flip polygon along given axis</span>
+poly = flip( poly, ax );
+<span class="comment">%  shift boundary of polygon</span>
+poly = shiftbnd( poly, d );
+<span class="comment">%  distance of positions POS from polygon</span>
+d = dist( poly, pos );
+</pre><p>An additional useful command to round the edges of a polygon is provided by</p><pre class="codeinput">poly = round( poly );                       <span class="comment">%  round edges of polygon</span>
+poly = round( poly, <span class="string">'rad'</span>, 0.2 );           <span class="comment">%  provide rounding radius</span>
+poly = round( poly, <span class="string">'nrad'</span>, 10 );           <span class="comment">%  provide number of points</span>
+poly = round( poly, <span class="string">'edge'</span>, [ 1, 2 ] );     <span class="comment">%  round only edges 1 and 2</span>
+</pre><p><img vspace="5" hspace="5" src="../figures/roundpolygon.jpg" alt=""> </p><p>The polygons can be plotted through</p><pre class="codeinput">plot( poly, LineSpec );               <span class="comment">%  plot polygon with line specification</span>
+plot( poly, <span class="string">'nvec'</span>, 1 );              <span class="comment">%  plot normal vectors of polygon</span>
+plot( poly, <span class="string">'nvec'</span>, 1, <span class="string">'scale'</span>, 1 );  <span class="comment">%  scale normal vectors</span>
+</pre><h2 id="6">Triangulation of polygon areas</h2><p>Once the polygon is constructed, one can call <tt>polymesh2d</tt> to perform a triangulation of the interior of the polygon using the Mesh2D toolbox.</p><pre class="codeinput">[ verts, faces ] = polymesh2d( poly );
+[ verts, faces ] = polymesh2d( poly, <span class="string">'hdata'</span>,   struct( <span class="string">'hmax'</span>, 0.2 ) );
+[ verts, faces ] = polymesh2d( poly, <span class="string">'options'</span>, struct( <span class="string">'disp'</span>, 1   ) );
+</pre><p><img vspace="5" hspace="5" src="../figures/polymesh2d.jpg" alt=""> </p><p>One can pass the arguments <tt>hdata</tt> and <tt>options</tt> to the Mesh2D toolbox. Details about these arguments can be found in the help and demo files of the toolbox.  The most useful setting for <tt>hdata</tt> is <tt>hmax</tt> which determines the maximum size of the discretized faces.  One can set the <tt>disp</tt> flag in the options structure to force an output on the screen.</p><p>To access the full richness of the Mesh2D toolbox we can build arrays of polygons <tt>[poly1,poly2,...]</tt>.  With these arrays it is possible to build complex 2D structures, as shown in the following examples</p><pre class="codeinput"><span class="comment">%  coupled particles</span>
+poly = [ polygon( 20 ), shift( round( polygon( 3 ) ), [ 2.5, 0 ] ) ];
+<span class="comment">%  perform triangulation with Mesh2D</span>
+[ verts, faces ] = polymesh2d( poly );
+<span class="comment">%  plot polygons and triangulation</span>
+triplot( faces, verts( :, 1 ), verts( :, 2 ) );  hold <span class="string">on</span>;  plot( poly, <span class="string">'r-'</span> );
+
+<span class="comment">%  intersecting particles</span>
+poly = [ polygon( 20, <span class="string">'dir'</span>, - 1 ), scale( polygon( 4 ), 3 ) ];
+</pre><p><img vspace="5" hspace="5" src="../figures/polycoupled.jpg" alt=""> </p><p>With two intersecting polygons one can generate particles with holes.  In the call to <tt>polygon</tt> we have set the keyword <tt>'dir'</tt> in order to indicate that this is an inner surface.  Although the keyword has no influence on the Mesh2D discretization, it has important consequences when extruding particles from the 2D polygons, as discussed in the <a href="bem_ug_polygon3.html">polygon3</a> section.</p><p>Copyright 2017 Ulrich Hohenester</p><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% The polygon class
+%
+% Metallic nanoparticles are often fabricated by means of electron beam
+% lithography.  These particles can have a complicated shape in a 2D plane
+% while the shape in the third direction comes from some kind of extrusion.
+% To deal with such particles we have introduced the |polygon| class that
+% allows for a flexible design of polygons in 2D together with a number of
+% functions to extrude the polygon into the z-direction.  The |polygon|
+% class uses the Mesh2D toolbox avaialble at <http://www.mathworks.com
+% www.mathworks.com>.  To access the functions of the Mesh2D toolobox one
+% must add the Mesh2D directory name to the Matlab paths.
+%
+%% Initialization
+
+%  initialization with position list POSLST = [ x1, y1; x2, y2; ... ]
+poly = polygon( poslst );
+poly = polygon( poslst, PropertyName, PropertyValue );
+%  polygon with N edges
+poly = polygon( n );    
+poly = polygon( n, PropertyName, PropertyValue );
+
+%%
+% <<../figures/polygon.jpg>>
+%
+% In the |polygon| initialization one can additionally provide the
+% following property names and values
+%
+% * *|'size'|* scale size of polygon,
+% * *|'dir'|* direction of polygon to determine the direction of the outer
+% surface normals (see below),
+% * *|'sym'|* symmetry keyword (see section on <./mnpbem_ug_symmetry.html
+% symmetry>).
+
+
+%% Methods
+%
+% There exist several <matlab:doc('polygon') methods> that are useful in 
+% modifying polygons
+
+%  shift polygon by vector [ x, y ]
+poly = shift( poly, [ x, y ] ); 
+%  scale polygon by scalar or two values
+poly = scale( poly, val ); 
+%  rotate polygon by angle (degrees)
+poly = rot(  poly, angle );         
+%  flip polygon along given axis
+poly = flip( poly, ax );
+%  shift boundary of polygon
+poly = shiftbnd( poly, d );         
+%  distance of positions POS from polygon
+d = dist( poly, pos );              
+%%
+% An additional useful command to round the edges of a polygon is provided 
+% by
+poly = round( poly );                       %  round edges of polygon
+poly = round( poly, 'rad', 0.2 );           %  provide rounding radius
+poly = round( poly, 'nrad', 10 );           %  provide number of points
+poly = round( poly, 'edge', [ 1, 2 ] );     %  round only edges 1 and 2
+%%
+% <<../figures/roundpolygon.jpg>>
+%
+% The polygons can be plotted through
+plot( poly, LineSpec );               %  plot polygon with line specification
+plot( poly, 'nvec', 1 );              %  plot normal vectors of polygon
+plot( poly, 'nvec', 1, 'scale', 1 );  %  scale normal vectors
+%% Triangulation of polygon areas
+%
+% Once the polygon is constructed, one can call |polymesh2d| to perform a
+% triangulation of the interior of the polygon using the Mesh2D toolbox.
+[ verts, faces ] = polymesh2d( poly );
+[ verts, faces ] = polymesh2d( poly, 'hdata',   struct( 'hmax', 0.2 ) );
+[ verts, faces ] = polymesh2d( poly, 'options', struct( 'disp', 1   ) );
+%%
+% <<../figures/polymesh2d.jpg>>
+%
+% One can pass the arguments |hdata| and |options| to the Mesh2D toolbox.
+% Details about these arguments can be found in the help and demo files of
+% the toolbox.  The most useful setting for |hdata| is |hmax| which
+% determines the maximum size of the discretized faces.  One can set the
+% |disp| flag in the options structure to force an output on the screen.
+%
+% To access the full richness of the Mesh2D toolbox we can build arrays of
+% polygons |[poly1,poly2,...]|.  With these arrays it is possible to build
+% complex 2D structures, as shown in the following examples
+
+%  coupled particles
+poly = [ polygon( 20 ), shift( round( polygon( 3 ) ), [ 2.5, 0 ] ) ];
+%  perform triangulation with Mesh2D
+[ verts, faces ] = polymesh2d( poly );
+%  plot polygons and triangulation
+triplot( faces, verts( :, 1 ), verts( :, 2 ) );  hold on;  plot( poly, 'r-' );
+
+%  intersecting particles
+poly = [ polygon( 20, 'dir', - 1 ), scale( polygon( 4 ), 3 ) ];
+
+%%
+% <<../figures/polycoupled.jpg>>
+%
+% With two intersecting polygons one can generate particles with holes.  In
+% the call to |polygon| we have set the keyword |'dir'| in order to
+% indicate that this is an inner surface.  Although the keyword has no
+% influence on the Mesh2D discretization, it has important consequences
+% when extruding particles from the 2D polygons, as discussed in the
+% <bem_ug_polygon3.html polygon3> section.
+%
+%%
+%
+% Copyright 2017 Ulrich Hohenester
+##### SOURCE END #####
+--></body></html>
