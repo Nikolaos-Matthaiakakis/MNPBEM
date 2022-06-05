@@ -79,7 +79,7 @@ In the last couple of years the toolbox has been extensively used by us and othe
 A list of recent changes and updated code elements can be found [here](https://physik.uni-graz.at/mnpbem/files/bugfix.txt).
 
 ## **User made GUI**
-This is a link for a user created GUI for the MNPBEM [MNPBEM-GUI](https://github.com/Nikolaos-Matthaiakakis/MNPBEM_GUI)
+This is a link for a user created GUI for the MNPBEM toolbox [MNPBEM-GUI](https://github.com/Nikolaos-Matthaiakakis/MNPBEM_GUI)
 
 ## **Copyright**
 Copyright (C) 2017 Ulrich Hohenester.
