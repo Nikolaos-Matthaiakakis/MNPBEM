@@ -1,7 +1,7 @@
 # MNPBEM
 ![image](https://user-images.githubusercontent.com/58590846/172062164-5476601b-d9a6-4f19-bf7c-582dcbd7d0aa.png)
 
-MNPBEM (https://physik.uni-graz.at/de/mnpbem/) is a toolbox for the simulation of metallic nanoparticles (MNP), using a boundary element method (BEM) approach developed by F. J. Garcia de Abajo and A. Howie, Phys. Rev. B 65, 115418 (2002). The main purpose of the toolbox is to solve Maxwell's equations for a dielectric environment where bodies with homogeneous and isotropic dielectric functions are separated by abrupt interfaces. Although the approach is in principle suited for arbitrary body sizes and photon energies, it is tested (and probably works best) for metallic nanoparticles with sizes ranging from a few to a few hundreds of nanometers, and for frequencies in the optical and near-infrared regime.
+[MNPBEM](https://physik.uni-graz.at/de/mnpbem/) is a toolbox for the simulation of metallic nanoparticles (MNP), using a boundary element method (BEM) approach developed by F. J. Garcia de Abajo and A. Howie, Phys. Rev. B 65, 115418 (2002). The main purpose of the toolbox is to solve Maxwell's equations for a dielectric environment where bodies with homogeneous and isotropic dielectric functions are separated by abrupt interfaces. Although the approach is in principle suited for arbitrary body sizes and photon energies, it is tested (and probably works best) for metallic nanoparticles with sizes ranging from a few to a few hundreds of nanometers, and for frequencies in the optical and near-infrared regime.
 
 From our experience with the toolbox it appears that there exist no "standard" applications, but each problem requires a slightly different implementation. For this reason we have decided to provide a set of general Matlab® classes that can be easily combined to simulate the problem of interest. The toolbox comes along with detailed help pages and a number of examples that can be used as templates for other simulations.
 
@@ -48,7 +48,7 @@ In the last couple of years the toolbox has been extensively used by us and othe
 
 ## **Bug report**
 
-A list of recent changes and updated code elements can be found here https://physik.uni-graz.at/mnpbem/files/bugfix.txt.
+A list of recent changes and updated code elements can be found [here](https://physik.uni-graz.at/mnpbem/files/bugfix.txt).
 
 ## **User made GUI**
 This is a link for a user created GUI for the MNPBEM [MNPBEM-GUI](https://github.com/Nikolaos-Matthaiakakis/MNPBEM_GUI)
