@@ -5,7 +5,7 @@
 
 From our experience with the toolbox it appears that there exist no "standard" applications, but each problem requires a slightly different implementation. For this reason we have decided to provide a set of general Matlab® classes that can be easily combined to simulate the problem of interest. The toolbox comes along with detailed help pages and a number of examples that can be used as templates for other simulations.
 
-As an alternative to MNPBEM, and especially for the study of dielectric nanoparticles, you can also use [nanobem](https://github.com/uhohenester/nanobem22). Nanobem is a Matlab toolbox for the solution of Maxwell's equations for metallic and dielectric nanoparticles using a Galerkin boundary element method (BEM) approach.
+As an alternative to MNPBEM, and especially for the study of dielectric nanoparticles, you can use [nanobem](https://github.com/uhohenester/nanobem22). Nanobem is a Matlab toolbox for the solution of Maxwell's equations for metallic and dielectric nanoparticles using a Galerkin boundary element method (BEM) approach.
 
 ## **Reference and Download**
 
