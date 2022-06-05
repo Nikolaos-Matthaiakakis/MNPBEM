@@ -17,7 +17,7 @@ In comparison to the toolbox published in these papers, the current version incl
 
 
 -**Copyright.** The MNPBEM toolbox is distributed under the terms of the GNU General Public License. See the file COPYING in the main directory for license details.
--**Download.** For the download you must provide your name and a valid e-mail address. The current version MNPBEM17 of the toolbox can be downloaded here: mnpbem17.zip, the previous version MNPBEM14 here: mnpbem14.zip.
+-**Download.** Simply download the files from the repository.
 -**Installation.**  Unzip the downloaded file and follow the instructions given in the file Readme.txt in the main directory of the toolbox.
 -**Developers.** Ulrich Hohenester, Andreas Trügler (University of Graz)
 
