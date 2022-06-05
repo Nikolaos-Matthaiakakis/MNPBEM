@@ -20,6 +20,7 @@ In comparison to the toolbox published in these papers, the current version incl
 - **Download.** Simply download the files from the repository.
 - **Installation.**  Unzip the downloaded file and follow the instructions given in the file Readme.txt in the main directory of the toolbox.
 - **Developers.** Ulrich Hohenester, Andreas Trügler (University of Graz)
+- **Github page manager.** Nikolaos Matthaiakakis
 
 ## **Path to MNPBEM directory**
 
