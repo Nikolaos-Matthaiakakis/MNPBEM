@@ -27,7 +27,7 @@ To use the MNPBEM toolbox, you must add at the beginning of each session
 the MNPBEM17 directory and all subdirectories to the Matlab path, e.g. 
 by calling
 
-  >> addpath( genpath( 'MNPBEMDIR' ) );
+      addpath( genpath( 'MNPBEMDIR' ) );
 
 Here, MNPBEMDIR is the *full* directory name of the MNPBEM17 toolbox.  
 
