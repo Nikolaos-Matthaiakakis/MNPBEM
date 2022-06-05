@@ -30,7 +30,7 @@ In comparison to the toolbox published in these papers, the current version incl
 
 ## **Features of the toolbox**
 
--**Plane wave excitation.** We have implemented plane wave excitation of dielectric nanoparticles, together with the calculation of the corresponding scattering and extinction cross sections.
+- **Plane wave excitation.** We have implemented plane wave excitation of dielectric nanoparticles, together with the calculation of the corresponding scattering and extinction cross sections.
 - **Dipole excitation.** We also provide excitation of oscillating dipoles, together with a calculation of the resulting total and radiative scattering rates for the dipole. With such excitations, it is also possible to compute the photonic local density of states (LDOS) and dyadic Green functions.
 - **Layer structure.** Plane wave and dipole excitations have been implemented for layer structures and substrates.
 - **EELS simulation.** We additionally provide classes for the simulation of electron energy loss spectroscopy (EELS) of plasmonic nanoparticles.
