@@ -17,6 +17,7 @@ When publishing results obtained with the MNPBEM toolbox, we ask you to cite one
 
 In comparison to the toolbox published in these papers, the current version includes a number of new features, as detailed in the help pages of the toolbox. Also the calling sequence for some of the classes and functions has changed.
 
+Additionally, acknowledging the efforts of the github page manager Nikolaos Matthaiakakis in the acknowledgement section of your publication would be appreciated.
 
 - **Copyright.** The MNPBEM toolbox is distributed under the terms of the GNU General Public License. See the file COPYING in the main directory for license details.
 - **Download.** Simply download the files from the repository.
