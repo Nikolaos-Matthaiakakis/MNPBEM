@@ -22,6 +22,4 @@ eps = cellfun( @( eps ) ( eps( enei ) ), obj.p.eps );
 %  bulk losses [Eq. (17)]
 pbulk = 2 * fine ^ 2 / ( bohr * hartree * pi * obj.vel ^ 2 ) *  ...
   imag( - 1 ./ eps ) * path( obj ) *                            ...
-  log( sqrt( ( mass / ene ) ^ 2 * obj.vel ^ 4 * obj.phiout ^ 2 + 1 ) );
-%log( sqrt( ( mass / ene ) ^ 2 * obj.vel ^ 2 * obj.phiout ^ 2 + 1 ) );
-%qc = q * sqrt( ( mass / ene ) ^ 2 * obj.vel ^ 4 * obj.phiout ^ 2 + 1 );
+  log( sqrt( ( mass / ene ) ^ 2 * obj.vel ^ 2 * obj.phiout ^ 2 + 1 ) );

@@ -33,8 +33,7 @@ p = comparticle( epstab, { p1, p2 }, [ 2, 1; 3, 1 ], 1, 2, op );
 %  impact parameters (moving away from gap)
 imp = [ 0, 0; 50, 0; 100, 0; 200, 0 ];
 % %  plot particle and impact parameters
-figure
- plot( p, 'EdgeColor', 'b' );  hold on
+% plot( p, 'EdgeColor', 'b' );  hold on
 % plot3( imp( :, 1 ), imp( :, 2 ), 0 * imp( :, 1 ) + 30, 'm+' );
 
 %  loss energies in eV
@@ -65,7 +64,6 @@ end
 multiWaitbar( 'CloseAll' );
 
 %%  final plot
-figure
 plot( ene, psurf + pbulk, 'o' );  hold on
 
 legend( 'gap', '50 nm', '100 nm', '200 nm' );
@@ -278,5 +276,5 @@ data = [  ...
   4.500  0.001684  0.001405  0.001439  0.001397  0.000000  0.002824  0.002824  0.002824 ];
 
 if ~verLessThan( 'matlab', '8.4.0' ), set( gca, 'ColorOrderIndex', 1 );  end
-figure
+
 plot( data( :, 1 ), data( :, 2 : 5 ) + data( :, 6 : end ), '-' );

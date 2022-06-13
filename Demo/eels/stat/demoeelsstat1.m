@@ -44,7 +44,7 @@ for ien = 1 : length( enei )
   sig = bem \ exc( enei( ien ) );
   %  EELS losses
   psurf( ien ) = exc.loss( sig );
-  [ psurf1( :, ien ), pbulk1( :, ien ) ] = exc.loss( sig );
+  
   multiWaitbar( 'BEM solver', ien / numel( enei ) );
 end
 %  close waitbar
@@ -54,8 +54,7 @@ multiWaitbar( 'CloseAll' );
 %  Mie solver
 mie = miesolver( epstab{ 2 }, epstab{ 1 }, diameter, op, 'lmax', 40 );
 %  final plot
-figure
-plot( ene, psurf, 'o-',ene, psurf1+pbulk1, '*-', ene, mie.loss( imp, enei, vel ), '.-' );
+plot( ene, psurf, 'o-', ene, mie.loss( imp, enei, vel ), '.-' );
 
 legend( 'BEM', 'Mie' );
 

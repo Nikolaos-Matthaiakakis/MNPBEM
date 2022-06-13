@@ -4,8 +4,6 @@ function y = matmul( a, x )
 %  The matrix multiplication is performed along the last dimension of A and
 %  the first dimension of X.
 
-
-
 if numel( a ) == 1
   %  A is scalar
   if a == 0

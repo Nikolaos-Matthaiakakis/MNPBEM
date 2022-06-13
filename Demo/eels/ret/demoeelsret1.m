@@ -56,7 +56,6 @@ multiWaitbar( 'CloseAll' );
 mie = miesolver( epstab{ 2 }, epstab{ 1 }, diameter, op, 'lmax', 40 );
 
 %  final plot
-figure
 plot( ene, psurf, 'o-', ene, mie.loss( imp, enei, vel ), '.-' );
 
 legend( 'BEM', 'Mie' );

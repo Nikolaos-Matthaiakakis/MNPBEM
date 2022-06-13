@@ -26,14 +26,11 @@ classdef bemretlayer < bembase
     npar        %  parallel component of outer surface normal
     eps1        %  dielectric function  inside of surface
     eps2        %  dielectric function outside of surface
-    L1          %  G1e * inv( G1 )
-    L2p         %  G2e * inv( G2 ), parallel component
     G1i         %  inverse of  inside Green function G1
     G2pi;       %  inverse of outside parallel Green function G2
     G2          %  outside Green function G2
-    G2e         %  G2 multiplied with dielectric function
-    Sigma1      %  H1  * inv( G1 ), Eq. (21)
-    Sigma1e     %  H1e * inv( G1 )
+    H2          %  outside surface derivative of Green function G2
+    Sigma1      %  H1 * G1i, Eq. (21)
     Gamma       %  inv( Sigma1 - Sigma2 )
     m           %  response matrix for layer system
   end

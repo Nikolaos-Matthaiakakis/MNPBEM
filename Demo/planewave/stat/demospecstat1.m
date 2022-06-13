@@ -13,7 +13,7 @@ op = bemoptions( 'sim', 'stat', 'waitbar', 0, 'interp', 'curv' );
 %  table of dielectric functions
 epstab = { epsconst( 1 ), epstable( 'gold.dat' ) };
 %  diameter of sphere
-diameter = 30;
+diameter = 10;
 %  initialize sphere
 p = comparticle( epstab, { trisphere( 144, diameter ) }, [ 2, 1 ], 1, op );
 
@@ -36,16 +36,13 @@ for ien = 1 : length( enei )
   %  scattering and extinction cross sections
   sca( ien, : ) = exc.sca( sig );
   ext( ien, : ) = exc.ext( sig );
-  absorb( ien, : ) = exc.abs( sig );
 end
 
 %%  final plot
-figure
 plot( enei, sca, 'o-'  );  hold on;
 
 xlabel( 'Wavelength (nm)' );
 ylabel( 'Scattering cross section (nm^2)' );
-
 
 %%  comparison with Mie theory
 mie = miesolver( epstab{ 2 }, epstab{ 1 }, diameter, op );
@@ -53,10 +50,3 @@ mie = miesolver( epstab{ 2 }, epstab{ 1 }, diameter, op );
 plot( enei, mie.sca( enei ), 'r+' );  hold on
 
 legend( 'BEM : x-polarization', 'BEM : y-polarization', 'Mie theory' );
-hold off;
-
-figure
-plot( enei, absorb, 'o-'  );  
-
-xlabel( 'Wavelength (nm)' );
-ylabel( 'Absorption cross section (nm^2)' );

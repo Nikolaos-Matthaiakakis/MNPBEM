@@ -15,19 +15,17 @@ obj = subsref( obj, substruct( '()', { exc.enei } ) );
 %%  external perturbation and extract stored variables
 %  Garcia de Abajo and Howie, PRB 65, 115418 (2002).
 
-k       = obj.k;       %  wavenumber of light in vacuum
-nvec    = obj.nvec;    %  outer surface normals of discretized surface
-npar    = obj.npar;    %  parallel component of outer surface normal
-L1      = obj.L1;      %  G1e * inv( G1 )
-L2p     = obj.L2p;     %  G2e * inv( G2 ), parallel component
-G1i     = obj.G1i;     %  inverse of  inside Green function G1
-G2pi    = obj.G2pi;    %  inverse of outside parallel Green function G2
-G2      = obj.G2;      %  outside Green function G2
-G2e     = obj.G2e;     %  G2 multiplied with dielectric function
-Sigma1  = obj.Sigma1;  %  H1  * G1i, Eq. (21)
-Sigma1e = obj.Sigma1e; %  H1e * G1i
-Gamma   = obj.Gamma;   %  inv( Sigma1 - Sigma2 )
-m       = obj.m;       %  response matrix for layer system
+k      = obj.k;       %  wavenumber of light in vacuum
+nvec   = obj.nvec;    %  outer surface normals of discretized surface
+npar   = obj.npar;    %  parallel component of outer surface normal
+eps1   = obj.eps1;    %  dielectric function inside of surface
+eps2   = obj.eps2;    %  dielectric function outside of surface
+G1i    = obj.G1i;     %  inverse of  inside Green function G1
+G2pi   = obj.G2pi;    %  inverse of outside parallel Green function G2
+G2     = obj.G2;      %  outside Green function G2
+Sigma1 = obj.Sigma1;  %  H1 * G1i, Eq. (21)
+Gamma  = obj.Gamma;   %  inv( Sigma1 - Sigma2 )
+m      = obj.m;       %  response matrix for layer system
 
 %  number of boundary elements
 n = obj.p.n;
@@ -41,11 +39,13 @@ aperp = inner( zunit, a );
 apar = a - outer( zunit, aperp );
 
 %%  solve BEM equations
+%  difference of dielectric functions
+deps = eps1 - eps2;
 %  modify alpha and De, Eq. (9,10)
-alpha = alpha - matmul( Sigma1, a ) + 1i * k * outer( nvec, matmul( L1, phi ) );
-De = De - matmul( Sigma1e, phi ) +  ...
-    1i * k * inner( nvec, matmul( L1, a ) ) +  ...
-    1i * k * inner( npar, matmul( ( L1 - L2p ) * Gamma, alpha ) );
+alpha = alpha - matmul( Sigma1, a ) + 1i * k * outer( nvec, matmul( eps1, phi ) );
+De = De - matmul( eps1, matmul( Sigma1, phi ) ) +  ...
+    1i * k * inner( nvec, matmul( eps1, a   ) ) +  ...
+    1i * k * inner( npar, matmul( deps * Gamma, alpha ) );
 %  decompose into parallel and perpendicular components
 alphaperp = inner( zunit, alpha );
 alphapar = alpha - outer( zunit, alphaperp );
@@ -58,8 +58,7 @@ h2perp = reshape( xi2( n + 1 : end, : ), size( De ) );
 
 %  parallel component of Green function, Eq. (8)
 h2par = matmul( G2pi * Gamma, alphapar +  ...
-   1i * k * outer( npar, matmul( L1 * G2.ss - G2e.ss, sig2   ) +  ...
-                         matmul( L1 * G2.sh - G2e.sh, h2perp ) ) );
+   1i * k * outer( npar, matmul( deps * G2.ss, sig2 ) + matmul( deps * G2.sh, h2perp ) ) );
 %  surface current
 h2 = h2par + outer( zunit, h2perp );
 

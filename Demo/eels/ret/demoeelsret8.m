@@ -9,8 +9,8 @@
 %  options for BEM simulation
 op = bemoptions( 'sim', 'ret', 'interp', 'curv', 'eels.refine', 2 );
 %  table of dielectric functions
-%epstab  = { epsconst( 1 ), epstable( 'silver.dat' ), epsconst( 4 ) };
-epstab  = { epsconst( 1 ), epstable( 'silver.dat' ), epstable( 'silver.dat' ) };
+epstab  = { epsconst( 1 ), epstable( 'silver.dat' ), epsconst( 4 ) };
+
 %  dimensions of particle
 len = [ 80, 80 * 2 / sqrt( 3 ) ];
 %  polygon
@@ -40,8 +40,7 @@ lo = flipfaces( shift( particle( verts, faces ), [ 0, 0, - 15 ] ) );
 %  make particle
 p = comparticle( epstab, { pup, plo, up, lo },  ...
                    [ 2, 1; 2, 3; 1, 3; 3, 1 ], [ 1, 2 ], op );
-figure
-plot(p,'EdgeColor','b','nvec',1)
+
 %%  EELS excitation
 %  loss energies (extracted from DEMOEELSRET7)
 ene = [ 1.60, 2.15, 2.38, 2.90 ];
@@ -81,7 +80,7 @@ multiWaitbar( 'CloseAll' );
 %  x and y limits
 xx = [   min( x( : ) ), max( x( : ) ) ];
 yy = [ - max( y( : ) ), max( y( : ) ) ];
-figure
+
 %  plot EELS maps
 for i = 1 : 4
     
@@ -101,5 +100,3 @@ for i = 1 : 4
   title( subsref( { '1.60 eV', '2.15 eV', '2.38 eV', '2.90 eV' },  ...
                                           substruct( '{}', { i } ) ) );
 end
-figure 
-plot(p,'EdgeColor','b','nvec',1)

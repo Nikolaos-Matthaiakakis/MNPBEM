@@ -91,7 +91,6 @@ e2 = emesh( sig ) + emesh( exc.field( emesh.pt, enei ) );
 
 %%  final plot
 %  plot particle
-figure
 plot( p, 'FaceAlpha', 0.5 );
 %  plot fields in xy-plane above nanodisk
 coneplot( pt.pos, e2, 'scale', 2 );

@@ -14,7 +14,7 @@ if isempty( stat )
 elseif ~isempty( obj.eneisav ) &&  ...
   ~( issorted( [ obj.eneisav; obj.enei ] ) || issorted( flipud( [ obj.eneisav; obj.enei ] ) ) )
   %  reset statistics
-  stat = struct( 'compression', stuct );
+  stat = struct( 'compression', struct );
 end
 
 %  compression for H-matrix

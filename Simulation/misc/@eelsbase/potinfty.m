@@ -16,7 +16,7 @@ p = obj.p;
 
 %  Lorentz contraction factor
 if ~exist( 'gamma', 'var' ) || isempty( gamma )
-    gamma = 1;
+  gamma = 1;
 end
 
 %  index to face elements

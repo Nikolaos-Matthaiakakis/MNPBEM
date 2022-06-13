@@ -80,7 +80,6 @@ end
 multiWaitbar( 'CloseAll' );
 
 %%  final plot
-figure
 plot( enei, sca, 'o-' );  hold on;
 
 xlabel( 'Wavelength (nm)' );

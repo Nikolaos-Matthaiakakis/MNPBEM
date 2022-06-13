@@ -1,10 +1,11 @@
-function sub = subclasses( classname )
+function sub = subclasses( classname, str )
 %  SUBCLASSES - Find names of subclasses for superclass CLASSNAME.
 %
 %  Usage :
-%    sub = subclasses( classname )
+%    sub = subclasses( classname, str )
 %  Input
 %    classname  :  name of superclass
+%    str        :  keep only subdirectories with STR in name
 %  Output
 %    sub        :  names of derived classes
 %                    The function scans through all directories of the
@@ -17,8 +18,9 @@ sub = {};
 %  read subdirectories
 %    alternatively use strsplit( path, pathsep )
 subs = transpose( strread( path,'%s', 'delimiter', pathsep ) );
-%  keep only subdirectories with 'MNPBEM' in name
-subs = subs( cellfun( @( x ) ~isempty( x ), strfind( subs, 'MNPBEM' ) ) );
+%  keep only subdirectories with DIR in name
+if ~exist( 'str', 'var' ),  str = 'MNPBEM';  end
+subs = subs( cellfun( @( x ) ~isempty( x ), strfind( subs, str ) ) );
 
 %  loop over all subdirectories
 for p = subs

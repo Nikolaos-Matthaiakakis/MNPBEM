@@ -22,8 +22,7 @@ eps = cellfun( @( eps ) ( eps( enei ) ), obj.p.eps );
 %  wavenumber of electron beam
 q = 2 * pi / ( enei * obj.vel );
 %  cutoff wavenumber
-%qc = q * sqrt( ( mass / ene ) ^ 2 * obj.vel ^ 2 * obj.phiout ^ 2 + 1 );
-qc = q * sqrt( ( mass / ene ) ^ 2 * obj.vel ^ 4 * obj.phiout ^ 2 + 1 );
+qc = q * sqrt( ( mass / ene ) ^ 2 * obj.vel ^ 2 * obj.phiout ^ 2 + 1 );
 %  wavenumber of light in media
 k = 2 * pi / enei * sqrt( eps );
 

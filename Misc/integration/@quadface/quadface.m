@@ -36,7 +36,7 @@ classdef quadface
       obj = init( obj, varargin{ : } );
     end
     
-    function display( obj )
+    function disp( obj )
       %  Command window display.
       disp( 'quadface :' );
       disp( struct( 'x', obj.x, 'y', obj.y, 'w', obj.w, 'npol', obj.npol ) );

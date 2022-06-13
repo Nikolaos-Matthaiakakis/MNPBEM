@@ -26,7 +26,7 @@ nsav = [ 32 60 144 169 225 256 289 324 361 400 441 484 529 576 625  ...
 inp = [ 'sphere', num2str( nsav( ind ) ) ];
 
 if n ~= nsav( ind )
-  %fprintf( 1, 'trisphere: loading %s from trisphere.mat\n', inp ); 
+  fprintf( 1, 'trisphere: loading %s from trisphere.mat\n', inp ); 
 end
 
 %  load data from file

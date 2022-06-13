@@ -2,7 +2,7 @@ function field = farfield( obj, spec, enei )
 %  FARFIELD - Electromagnetic fields of dipoles.
 %
 %  Usage for obj = dipoleretlayer :
-%    field = farfield( obj, spec, sig )
+%    field = farfield( obj, spec, enei )
 %  Input
 %    spec   :  SPECTRUMRETLAYER object 
 %    enei   :  wavelength of light in vacuum

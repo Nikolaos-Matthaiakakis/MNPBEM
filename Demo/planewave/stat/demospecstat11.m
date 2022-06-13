@@ -75,7 +75,6 @@ ee = sqrt( dot( e, e, 3 ) );
 
 %%  final plot
 %  plot electric field
-figure
 imagesc( x( : ), z( : ), ee );  hold on;
 plot( [ min( x( : ) ), max( x( : ) ) ], [ 0, 0 ], 'w--' );
 

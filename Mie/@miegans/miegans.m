@@ -33,7 +33,7 @@ classdef miegans
       obj = init( obj );
     end
     
-    function display( obj )
+    function disp( obj )
       %  Command window display.
       disp( 'miegans : ' );
       disp( struct( 'epsin', obj.epsin, 'epsout', obj.epsout,  ...

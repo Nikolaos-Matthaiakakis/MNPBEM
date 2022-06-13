@@ -13,8 +13,8 @@ classdef epsfun
       %  Constructor for EPSFUN.
       %
       %  Usage : 
-      %    obj = epsbase( fun )
-      %    obj = epsbase( fun, key )
+      %    obj = epfun( fun )
+      %    obj = epsfun( fun, key )
       %  Input
       %    fun    :  function for evaluation eps = fun( enei )
       %    key    :  wavelengths (nm) or energies (eV)
@@ -31,7 +31,7 @@ classdef epsfun
     function varargout = subsref( obj, s )
       %  Evaluate dielectric function.
       %
-      %  Usage for obj = nonlocal.epsfun :
+      %  Usage for obj = epsfun :
       %    [ eps, k ] = obj( enei )
       %  Input
       %    enei   :  light wavelength in vacuum (nm)

@@ -17,7 +17,9 @@ switch s( 1 ).type
       case 'field'
         varargout{ 1 } = field(     obj, s( 2 ).subs{ : } );
       case 'potential'
-        varargout{ 1 } = potential( obj, s( 2 ).subs{ : } );         
+        varargout{ 1 } = potential( obj, s( 2 ).subs{ : } );    
+      case 'deriv'
+        varargout{ 1 } = obj.g.deriv;        
       otherwise
         [ varargout{ 1 : nargout } ]  = builtin( 'subsref', obj, s );
     end

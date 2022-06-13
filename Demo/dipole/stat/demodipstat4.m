@@ -62,7 +62,6 @@ multiWaitbar( 'CloseAll' );
 
 %%  final plot
 %  density plot of total scattering rate (LDOS)
-figure
 imagesc( ene, x, log10( sum( tot, 3 ) ) .' );  hold on
 %  plot disk edge
 plot( ene, 0 * ene + 15, 'w--' );

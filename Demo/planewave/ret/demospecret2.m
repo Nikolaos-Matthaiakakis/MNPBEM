@@ -53,7 +53,6 @@ end
 multiWaitbar( 'CloseAll' );
 
 %%  final plot
-figure
 plot( enei, sca1, 'o--' );  hold on;
 if ~verLessThan( 'matlab', '8.4.0' ), set(gca, 'ColorOrderIndex', 1 );  end
 plot( enei, sca2, 's-'  );  

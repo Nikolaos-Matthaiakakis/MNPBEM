@@ -5,7 +5,7 @@ function [ sca, dsca ] = scattering( field, medium )
 %    [ sca, dsca ] = scattering( field )
 %  Input
 %    field      :  compstruct object with scattered electromagnetic fields
-%    medium     :  compute total radiated power only in given medium
+%    medium     :  compute total radiated pwoer only in given medium
 %  Output
 %    sca        :  total radiated power
 %    dsca       :  differential radiated power for particle surface
@@ -29,4 +29,3 @@ end
 sca = squeeze( matmul( reshape( area, 1, [] ), dsca ) );
 %  convert differential radiated power to compstruct object
 dsca = compstruct( pinfty, field.enei, 'dsca', dsca );
-

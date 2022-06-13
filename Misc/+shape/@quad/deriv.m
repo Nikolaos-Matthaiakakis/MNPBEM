@@ -25,9 +25,9 @@ function sp  = deriv4( x, y, key )
 
 switch key
   case 'x'
-    sp = 0.25 * [ - ( 1 - y ),   ( 1 - y ), ( 1 + y), - ( 1 + y ) ];
+    sp = 0.25 * [ - ( 1 - y ),   ( 1 - y ), ( 1 + y ), - ( 1 + y ) ];
   case 'y'
-    sp = 0.25 * [ - ( 1 - x ), - ( 1 + x ), ( 1 + x ),  ( 1 - x ) ];
+    sp = 0.25 * [ - ( 1 - x ), - ( 1 + x ), ( 1 + x ),   ( 1 - x ) ];
   case 'xy'
     sp = repmat( 0.25 * [ 1, - 1, 1, - 1 ], numel( x ), 1 );
   otherwise

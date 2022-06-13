@@ -58,7 +58,6 @@ e1 = emesh( sig1 );  ee1 = sqrt( dot( e1, e1, 3 ) );
 e2 = emesh( sig2 );  ee2 = sqrt( dot( e2, e2, 3 ) );
 
 %%  final plot
-figure
 %  plot electric field for dipole mode
 subplot( 1, 2, 1 );  imagesc( x( : ), z( : ), log10( ee1 ) );  
 %  plot electron trajectory

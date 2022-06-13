@@ -59,4 +59,4 @@ xlabel( 'Wavelength (nm)' );
 ylabel( 'Scattering cross section (nm^2)' );
 
 legend( 'BEM 1:1:2', 'BEM 1:1:3', 'BEM 1:1:4',  ...
-        'Mie-Gans 1:1:2', 'Mie-Gans 1:1:3', 'Mie-Gans 1:1:4', 2 );
+        'Mie-Gans 1:1:2', 'Mie-Gans 1:1:3', 'Mie-Gans 1:1:4' );

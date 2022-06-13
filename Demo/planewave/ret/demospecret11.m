@@ -71,28 +71,17 @@ for ien = 1 : length( enei )
   sig = bem \ exc( p, enei( ien ) );
   %  scattering cross section
   sca( ien, : ) = exc.sca( sig );
-  absorb( ien, : ) = exc.abs( sig );
+  
   multiWaitbar( 'BEM solver', ien / numel( enei ) );
 end
 %  close waitbar
 multiWaitbar( 'CloseAll' );
 
 %%  final plot
-figure
 plot( enei, sca, 'o-' );  hold on;
 
 xlabel( 'Wavelength (nm)' );
 ylabel( 'Scattering cross section (nm^2)' );
-
-legend( '0^o', '20^o', '40^o', '60^o', '80^o' );
-
-title( 'TM polarization, excitation from above' );
-
-figure
-plot( enei, absorb, 'o-' );  hold on;
-
-xlabel( 'Wavelength (nm)' );
-ylabel( 'absorb cross section (nm^2)' );
 
 legend( '0^o', '20^o', '40^o', '60^o', '80^o' );
 

@@ -20,7 +20,7 @@ classdef tri
     
     function disp( obj )
       %  Command window display.
-      disp( 'tri : ' );
+      disp( 'shape.tri : ' );
       disp( struct( 'node', obj.node ) );
     end  
   end

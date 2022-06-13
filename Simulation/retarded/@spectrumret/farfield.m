@@ -72,4 +72,3 @@ else
   field.e = reshape( e, [ size( dir, 1 ), siz( 2 : end ) ] );
   field.h = reshape( h, [ size( dir, 1 ), siz( 2 : end ) ] );
 end
-

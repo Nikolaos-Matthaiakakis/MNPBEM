@@ -1,7 +1,7 @@
 function y = intbessel( obj, enei, kpar, pos, ind )
 %  INTBESSEL - Integration for given k-parallel.
 %
-%  Usage for obj = greensubs :
+%  Usage for obj = layerstructure :
 %    y = intbessel( obj, enei, kpar, pos, ind )
 %  Input
 %    enei       :  wavelength of light in vacuum

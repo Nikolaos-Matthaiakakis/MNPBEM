@@ -9,17 +9,15 @@
 
 %%  initialization
 %  table of dielectric functions
-%epstab = { epsconst( 1 ), epstable( 'gold.dat' ),  ...
-%           epstable( 'gold.dat' ), epsconst( 2.5 ), epsconst( 10 ) };
-epstab = { epsconst( 1 ), epstable( 'gold.dat' ), epsconst( 1 ), epsconst( 1 ) };
+epstab = { epsconst( 1 ), epstable( 'gold.dat' ),  ...
+           epstable( 'gold.dat' ), epsconst( 2.5 ), epsconst( 10 ) };
 %  location of interface of substrate
 ztab = [ 10, 0 ];
 
 %  default options for layer structure
 op = layerstructure.options; 
 %  set up layer structure
-%layer = layerstructure( epstab, [ 1, 4, 5 ], ztab, op );
-layer = layerstructure( epstab, [ 1, 3, 4 ], ztab, op );
+layer = layerstructure( epstab, [ 1, 4, 5 ], ztab, op );
 %  options for BEM simulations
 op = bemoptions( 'sim', 'ret',  'interp', 'curv' , 'layer', layer );
 
@@ -30,8 +28,7 @@ p1 = shift( trisphere( 144, 2 * a ), [   a + 0.5, 0, a + 1 ] );
 p2 = shift( trisphere( 144, 2 * a ), [ - a - 0.5, 0, a + 1 ] );
 
 %  set up COMPARTICLE objects
-%p = comparticle( epstab, { p1, p2 }, [ 2, 4; 3, 4  ], 1, 2, op );
-p = comparticle( epstab, { p1, p2 }, [ 2, 3; 2, 3  ], 1, 2, op );
+p = comparticle( epstab, { p1, p2 }, [ 2, 4; 3, 4  ], 1, 2, op );
 
 %  light propagation angle
 theta = pi / 180 * reshape( 40, [], 1 );
@@ -90,7 +87,6 @@ ee = sqrt( dot( e, e, 3 ) );
 
 %%  final plot
 %  plot electric field
-figure
 imagesc( x( : ), z( : ), log10( ee ) );  hold on
 
 plot( [ min( x( : ) ), max( x( : ) ) ], ztab( 1 ) * [ 1, 1 ], 'w--' );

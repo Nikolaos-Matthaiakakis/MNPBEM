@@ -7,7 +7,6 @@ function val = subsref( obj, s )
 %    obj.extinction( enei )  :  extinction cross section (use also obj.ext)
 
 switch s( 1 ).type
-%%  scattering cross sections  
   case '.'  
     switch s( 1 ).subs
       case { 'sca', 'scattering' }
@@ -16,8 +15,6 @@ switch s( 1 ).type
         val = absorption( obj, s( 2 ).subs{ : } );
       case { 'ext', 'extinction' }
         val = extinction( obj, s( 2 ).subs{ : } );
-        
-%%  class properties        
       otherwise
         val = builtin( 'subsref', obj, s );
     end

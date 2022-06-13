@@ -24,5 +24,4 @@ p = comparticle( epstab, { p }, [ 2, 1 ], 1, op );
 %  we next plot the eigenmodes
 %    the green arrows at the top of the figure allow to page through the
 %    different eigenmodes
-figure
 plot( p, ur );

@@ -95,7 +95,6 @@ end
 multiWaitbar( 'CloseAll' );
   
 %%  final plot
-figure
 plot( enei, sca1, 'o-'  );  hold on
 if ~verLessThan( 'matlab', '8.4.0' ), set( gca, 'ColorOrderIndex', 1 );  end
 plot( enei, sca2, 's--' );  
@@ -104,5 +103,3 @@ xlabel( 'Wavelength (nm)' );
 ylabel( 'Scattering cross section' );
 
 legend( '0^o, p1', '20^o', '40^o', '60^o', '80^o', '0^o, p2' );
-figure
-plot(p1)

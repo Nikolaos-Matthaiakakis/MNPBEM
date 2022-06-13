@@ -58,4 +58,3 @@ semilogy( z, rad0, 'o--' );
 
 legend( 'tot(x) @ BEM', 'tot(z) @ BEM', 'rad(x) @ BEM', 'rad(z) @ BEM',  ...
         'tot(x) @ Mie', 'tot(z) @ Mie', 'rad(x) @ Mie', 'rad(z) @ Mie' );
-    

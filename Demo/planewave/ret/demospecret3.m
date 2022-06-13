@@ -8,7 +8,6 @@
 %  Runtime on my computer:  20.7 sec.
 
 %%  initializations
-figure
 %  options for BEM simulation
 op = bemoptions( 'sim', 'ret', 'interp', 'curv' );
 

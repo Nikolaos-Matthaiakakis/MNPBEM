@@ -36,7 +36,6 @@ sig = bem \ dip( p, enei );
 [ tot, rad ] = dip.decayrate( sig );
 
 %%  final plot
-figure
 semilogy( z, tot, '-'  );  hold on;
 if ~verLessThan( 'matlab', '8.4.0' ), set(gca, 'ColorOrderIndex', 1 );  end
 semilogy( z, rad, 'o-' ); 

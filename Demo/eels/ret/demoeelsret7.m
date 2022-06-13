@@ -76,7 +76,6 @@ end
 multiWaitbar( 'CloseAll' );
 
 %%  final plot
-figure
 plot( ene, psurf + pbulk );
 
 xlim( [ min( ene ), max( ene ) ] );

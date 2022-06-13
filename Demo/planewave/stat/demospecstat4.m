@@ -25,7 +25,7 @@ p = comparticle( epstab, { scale( p, diameter( 1 ) ),  ...
 %  set up BEM solvers
 bem = bemsolver( p, op );
 %  plane wave excitation
-exc = planewave( [ 0, 1, 0 ], [ 0, 0, 1 ], op );
+exc = planewave( [ 1, 0, 0 ], [ 0, 0, 1 ], op );
 %  light wavelength in vacuum
 enei = 527;
 %  surface charge
@@ -37,8 +37,7 @@ sig = bem \ exc( p, enei );
 %  object for electric field
 %    MINDIST controls the minimal distance of the field points to the
 %    particle boundary
-%emesh = meshfield( p, x, 0, z, op, 'mindist', 0.1 );
-emesh = meshfield( p, x, z, 0, op, 'mindist', 0.1 );
+emesh = meshfield( p, x, 0, z, op, 'mindist', 0.1 );
 %  induced and incoming electric field
 e = emesh( sig ) + emesh( exc.field( emesh.pt, enei ) );
 %  norm of electric field
@@ -46,8 +45,7 @@ ee = sqrt( dot( e, e, 3 ) );
 
 %%  final plot
 %  plot electric field
-figure
-imagesc( x( : ), z( : ), log(ee )); 
+imagesc( x( : ), z( : ), ee ); 
 
 colorbar;  colormap hot( 255 );
 

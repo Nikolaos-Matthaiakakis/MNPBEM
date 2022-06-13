@@ -48,7 +48,6 @@ end
 multiWaitbar( 'CloseAll' );
 
 %%  final plot
-figure
 plot( enei, tot );  hold on;
 
 xlabel( 'Wavelength (nm)' );

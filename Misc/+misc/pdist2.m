@@ -4,8 +4,8 @@ function d = pdist2( p1, p2 )
 %  Usage :
 %    d = pdist2( p1, p2 )
 %  Input
-%    p1     :  positiaon array
-%    p2     :  position array
+%    p1     :  first  position array
+%    p2     :  second position array
 %  Output
 %    d      :  distance array between P1 and P2
 
