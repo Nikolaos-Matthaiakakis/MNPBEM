@@ -44,6 +44,7 @@ sig = bem \ exc( p, enei );
 f = field( bem, sig );
 %  plot norm of induced electric field
 plot( p, vecnorm( f.e ) );  
+%  plot( p, vecnorm( f.e, 2, 2 ) ); should be used for newer matlab versions due to a conflict between the inbuilt matlab vecnorm function and the MNPBEM vecnorm function
 %  add colorbar
 colorbar;
 
@@ -74,3 +75,4 @@ g = greenfunction( pt, p, op );
 fplate = field( g, sig );
 %  plot norm of electric field
 plot( eplate, vecnorm( fplate.e ) );
+%  plot( eplate, vecnorm( fplate.e, 2, 2 ) ); should be used for newer matlab versions due to a conflict between the inbuilt matlab vecnorm function and the MNPBEM vecnorm function
